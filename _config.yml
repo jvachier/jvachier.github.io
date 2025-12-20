@@ -1,6 +1,6 @@
 # Site settings
 title: Jeremy Vachier
-description: Theoretical Physicist | Senior Data Scientist
+description: Theoretical Physicist | Associate Director Data Science
 url: "https://jvachier.github.io"
 
 # Theme
@@ -12,6 +12,7 @@ author:
   linkedin: jérémy-vachier-28344011b
   github: jvachier
   kaggle: jvachier
+  avatar: /assets/images/profile.jpg  # Add your profile picture here
 
 # Build settings
 markdown: kramdown
