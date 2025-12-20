@@ -35,3 +35,11 @@ header_pages:
 # Security settings
 strict_front_matter: true
 safe: true
+
+# SEO
+social:
+  name: Jeremy Vachier
+  links:
+    - https://github.com/jvachier
+    - https://www.linkedin.com/in/jérémy-vachier-28344011b/
+    - https://kaggle.com/jvachier
