@@ -1,0 +1,19 @@
+# Blog Posts Directory
+
+This directory contains your blog posts. 
+
+## Creating a New Post
+
+Create a file with the format: `YYYY-MM-DD-title-of-post.md`
+
+Example structure:
+```markdown
+---
+layout: default
+title: Your Post Title
+date: 2025-12-20
+excerpt: A brief description of your post
+---
+
+Your content here...
+```
