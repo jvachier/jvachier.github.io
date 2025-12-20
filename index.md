@@ -17,7 +17,7 @@ I hold a PhD in Theoretical Physics from the Max Planck Institute for Dynamics a
 
 ## Current Focus
 
-- **Production ML Systems**: Building GxP-compliant models for pharmaceutical manufacturing (autoencoders, VAEs, RL, predictive maintenance)
+- **Production ML Systems**: Building GxP-compliant models for pharmaceutical manufacturing (autoencoders, VAEs, RL, GenAI, predictive maintenance)
 - **From-Scratch Implementations**: Building deep learning architectures without pre-trained models to deeply understand fundamentals (Transformers, attention mechanisms, custom training pipelines)
 - **Physics-Informed ML**: Applying stochastic process theory and statistical physics to machine learning problems
 - **Competitive ML**: Kaggle Expert 
