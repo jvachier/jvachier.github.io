@@ -27,7 +27,7 @@ A production-ready RAG system that automatically generates well-structured, lite
 - Generation: 10-30 seconds per introduction
 - Indexing: ~1 minute per 100 PDFs
 
-**Technologies:** Python 3.11+, LangChain, ChromaDB, SPECTER2, PyTorch, Dash  
+**Technologies:** Python 3.11+, GPU, LLM, ChromaDB, SPECTER2, RAG, Dash  
 **Status:** Production Ready | Apache 2.0 License  
 [→ View on GitHub](https://github.com/jvachier/scientific-literature-rag)
 
@@ -69,7 +69,7 @@ A comprehensive end-to-end system integrating speech recognition, sentiment anal
 - Research-grade code suitable for experimentation
 - Clean, well-documented implementation
 
-**Technologies:** Python 3.11+, TensorFlow, Keras, Vosk, Dash, Optuna  
+**Technologies:** Python 3.11+, Transformer, Bidirection LSTM, TensorFlow, Keras, Vosk, Dash, Optuna  
 **Status:** Research/Educational | Apache 2.0 License  
 [→ View on GitHub](https://github.com/jvachier/Sentiment_Analysis)
 
