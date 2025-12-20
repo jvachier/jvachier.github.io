@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-<img src="/assets/images/profile.jpg" alt="Jeremy Vachier" width="200" height="200" style="border-radius: 50%; margin-bottom: 20px; object-fit: cover;">
+<img src="/assets/images/profile.jpg" alt="Jeremy Vachier" width="200" height="200" style="border-radius: 50%; margin-bottom: 20px; object-fit: cover; object-position: center 30%;">
 
 # Jeremy Vachier
 

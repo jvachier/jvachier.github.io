@@ -12,6 +12,8 @@ title: Projects
 
 ![RAG System Demo](/assets/images/RAG.gif)
 
+*Live demonstration of the Scientific Literature RAG system generating introductions with semantic search and citation extraction.*
+
 A production-ready RAG system that automatically generates well-structured, literature-informed introductions for scientific papers. The system indexes research papers and leverages LLMs to synthesize relevant literature into comprehensive introductions with properly formatted citations.
 
 **Key Features:**
@@ -40,7 +42,7 @@ A production-ready RAG system that automatically generates well-structured, lite
 
 ![Transformer Architecture](assets/images/translation_transformer.jpeg)
 
-*Figure: Detailed architecture of the Transformer model showing encoder-decoder structure with multi-head attention mechanisms.*
+*Detailed architecture of the Transformer model showing encoder-decoder structure with multi-head attention mechanisms.*
 
 A comprehensive end-to-end system integrating speech recognition, sentiment analysis, and neural machine translation. Built with from-scratch Transformer implementation demonstrating deep understanding of attention mechanisms and encoder-decoder architectures.
 
@@ -127,7 +129,6 @@ A production-ready machine learning pipeline for personality classification usin
 - **Interactive Dash Dashboard**: Real-time predictions, model explainability, and performance visualization
 - **Meta-Learning Approach**: Logistic Regression ensemble combiner with optimized blending weights
 - **Out-of-Fold Predictions**: Unbiased ensemble training with stratified cross-validation
-- **Docker Deployment**: Containerized application with docker-compose orchestration
 - **Production-Ready**: Full test coverage, CI/CD pipeline, comprehensive logging
 
 **Ensemble Architecture:**
