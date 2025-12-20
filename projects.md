@@ -10,6 +10,8 @@ title: Projects
 ### Scientific Literature RAG System
 **AI-powered introduction generator for scientific papers**
 
+![RAG System Demo](/assets/images/rag-demo.gif)
+
 A production-ready RAG system that automatically generates well-structured, literature-informed introductions for scientific papers. The system indexes research papers and leverages LLMs to synthesize relevant literature into comprehensive introductions with properly formatted citations.
 
 **Key Features:**
@@ -30,12 +32,6 @@ A production-ready RAG system that automatically generates well-structured, lite
 **Technologies:** Python 3.11+, GPU, LLM, ChromaDB, SPECTER2, RAG, Dash  
 **Status:** Production Ready | Apache 2.0 License  
 [→ View on GitHub](https://github.com/jvachier/scientific-literature-rag)
-
-**Demo Video:**
-
-https://github.com/user-attachments/assets/8dd9d6d7-df41-456f-a8c3-a174f91da95e
-
-*Live demonstration of the Scientific Literature RAG system in action*
 
 ---
 
