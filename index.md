@@ -3,6 +3,8 @@ layout: default
 title: Home
 ---
 
+<img src="/assets/images/profile.jpg" alt="Jeremy Vachier" width="200" style="border-radius: 50%; margin-bottom: 20px;">
+
 # Jeremy Vachier
 
 ### Theoretical Physicist | Associate Director Data Science / Senior Data Scientist

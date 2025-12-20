@@ -12,6 +12,7 @@ author:
   linkedin: jérémy-vachier-28344011b
   github: jvachier
   kaggle: jvachier
+  avatar: /assets/images/profile.jpg  # Add your profile picture here
 
 # Build settings
 markdown: kramdown

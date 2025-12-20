@@ -31,10 +31,20 @@ A production-ready RAG system that automatically generates well-structured, lite
 **Status:** Production Ready | Apache 2.0 License  
 [→ View on GitHub](https://github.com/jvachier/scientific-literature-rag)
 
+**Demo Video:**
+
+https://github.com/user-attachments/assets/8dd9d6d7-df41-456f-a8c3-a174f91da95e
+
+*Live demonstration of the Scientific Literature RAG system in action*
+
 ---
 
 ### Speech-to-Text with Sentiment Analysis and Translation
 **Real-time multilingual processing pipeline**
+
+![Transformer Architecture](assets/images/translation_transformer.jpeg)
+
+*Figure: Detailed architecture of the Transformer model showing encoder-decoder structure with multi-head attention mechanisms.*
 
 A comprehensive end-to-end system integrating speech recognition, sentiment analysis, and neural machine translation. Built with from-scratch Transformer implementation demonstrating deep understanding of attention mechanisms and encoder-decoder architectures.
 
