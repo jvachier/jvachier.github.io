@@ -5,11 +5,11 @@ title: Home
 
 # Jeremy Vachier
 
-**Theoretical Physicist | Senior Data Scientist**
+### Theoretical Physicist | Associate Director Data Science / Senior Data Scientist
 
 ## About
 
-I'm an Associate Director of Data Science at AstraZeneca Sweden, where I build production machine learning systems for pharmaceutical manufacturing. I hold a PhD in Theoretical Physics from the Max Planck Institute and completed postdoctoral research at NORDITA Stockholm.
+I am an Associate Director of Data Science at AstraZeneca Sweden, where I build production machine learning systems for pharmaceutical manufacturing. I hold a PhD in Theoretical Physics from the Max Planck Institute and completed postdoctoral research at NORDITA Stockholm.
 
 ## Current Focus
 
