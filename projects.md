@@ -10,6 +10,8 @@ title: Projects
 ### Scientific Literature RAG System
 **AI-powered introduction generator for scientific papers**
 
+![RAG System Demo](/assets/images/RAG.gif)
+
 A production-ready RAG system that automatically generates well-structured, literature-informed introductions for scientific papers. The system indexes research papers and leverages LLMs to synthesize relevant literature into comprehensive introductions with properly formatted citations.
 
 **Key Features:**
@@ -30,12 +32,6 @@ A production-ready RAG system that automatically generates well-structured, lite
 **Technologies:** Python 3.11+, GPU, LLM, ChromaDB, SPECTER2, RAG, Dash  
 **Status:** Production Ready | Apache 2.0 License  
 [→ View on GitHub](https://github.com/jvachier/scientific-literature-rag)
-
-**Demo Video:**
-
-https://github.com/user-attachments/assets/8dd9d6d7-df41-456f-a8c3-a174f91da95e
-
-*Live demonstration of the Scientific Literature RAG system in action*
 
 ---
 
@@ -72,6 +68,87 @@ A comprehensive end-to-end system integrating speech recognition, sentiment anal
 **Technologies:** Python 3.11+, Transformer, Bidirection LSTM, TensorFlow, Keras, Vosk, Dash, Optuna  
 **Status:** Research/Educational | Apache 2.0 License  
 [→ View on GitHub](https://github.com/jvachier/Sentiment_Analysis)
+
+---
+
+### Active Particles in 3D Confinement
+**GPU-accelerated molecular dynamics simulation**
+
+![Performance Benchmark](assets/images/benchmark_plots.png)
+
+*Performance comparison across CPU and GPU implementations showing up to 27× speedup on Apple Silicon.*
+
+A high-performance C++ simulation framework for modeling active Brownian particles (ABPs) under cylindrical confinement in 3D space. Implements Euler-Maruyama algorithm for Langevin dynamics with dual CPU/GPU implementations.
+
+**Key Features:**
+- **Dual Implementations**: CPU-only (OpenMP) and GPU hybrid (Metal) versions
+- **GPU Acceleration**: Up to 27× speedup on Apple Silicon for large systems (N ≥ 1000)
+- **Langevin Dynamics**: Proper stochastic noise generation with Euler-Maruyama integration
+- **3D Cylindrical Confinement**: Reflective boundary conditions for realistic physical constraints
+- **Lennard-Jones Interactions**: Repulsive particle-particle forces with configurable strength
+- **OpenMP Parallelization**: Multi-threaded CPU optimization for all particle counts
+- **Automatic CPU/GPU Selection**: Smart threshold-based switching for optimal performance
+- **Numerical Stability**: Robust safeguards prevent NaN overflow at high particle densities
+
+**Performance Benchmarks (Apple M2, 1000 timesteps):**
+
+| Particles | CPU (1 thread) | OpenMP (6 cores) | GPU (Metal) | GPU Speedup |
+|-----------|----------------|------------------|-------------|-------------|
+| 100       | 0.026s         | 0.103s           | 0.096s      | 0.3×        |
+| 1,000     | 16s            | 6s               | 0.46s       | **34.8×**   |
+| 2,000     | 65s            | 24s              | 0.88s       | **73.9×**   |
+| 5,000     | 34.4s          | 14.3s            | 1.7s        | **20.2×**   |
+
+**Physical Model:**
+- Active Brownian particles with self-propulsion
+- Translational and rotational diffusion
+- Repulsive Lennard-Jones potential
+- Applications: bacterial suspensions, cell motility, colloidal systems
+
+**Technologies:** C++17, OpenMP, Metal GPU 
+**Status:** Research-Grade | Apache 2.0 License  
+[→ View on GitHub](https://github.com/jvachier/active_particles_in_3D)
+
+---
+
+### Personality Classification with Ensemble Learning
+**Production ML pipeline achieving Kaggle top 5%**
+
+![Dashboard Demo](/assets/images/personality_classification_app_recording.gif)
+
+*Interactive dashboard for real-time personality classification with model explainability and performance metrics.*
+
+A production-ready machine learning pipeline for personality classification using ensemble learning, achieving **top 5% (200/4,329)** in the [Kaggle Personality Classification Competition](https://www.kaggle.com/competitions/playground-series-s5e7). Features modular architecture, automated hyperparameter optimization, and interactive visualization.
+
+**Key Features:**
+- **Six Ensemble Stacks**: Complementary ML algorithms (Random Forest, XGBoost, LightGBM, CatBoost, Neural Networks)
+- **Advanced Data Augmentation**: SDV Copula-based synthetic data generation with quality control
+- **Automated Hyperparameter Optimization**: Optuna-powered tuning for each stack (200+ trials for blending)
+- **Interactive Dash Dashboard**: Real-time predictions, model explainability, and performance visualization
+- **Meta-Learning Approach**: Logistic Regression ensemble combiner with optimized blending weights
+- **Out-of-Fold Predictions**: Unbiased ensemble training with stratified cross-validation
+- **Docker Deployment**: Containerized application with docker-compose orchestration
+- **Production-Ready**: Full test coverage, CI/CD pipeline, comprehensive logging
+
+**Ensemble Architecture:**
+
+| Stack | Focus | Algorithms | Special Features |
+|-------|-------|-----------|------------------|
+| A | Traditional ML (Narrow) | RF, LR, XGBoost, LightGBM, CatBoost | Stable baseline |
+| B | Traditional ML (Wide) | Same as A | Extended search space |
+| C | Gradient Boosting | XGBoost, CatBoost | Tree specialists |
+| D | Sklearn Ensemble | Extra Trees, Hist GB, SVM, Gaussian NB | Diverse mix |
+| E | Neural Networks | MLPClassifier, Deep architectures | Non-linear patterns |
+| F | Noise-Robust | Same as A + label noise | Improved generalization |
+
+**Competition Results:**
+- **Rank**: 200/4,329 (Top 5%)
+- **Dataset**: ~18,000+ training samples (with augmentation), 8 personality dimensions
+- **Cross-Validation**: Stratified 5-fold CV for robust evaluation
+
+**Technologies:** Python 3.11+, scikit-learn, XGBoost, LightGBM, CatBoost, Optuna, Dash, Plotly
+**Status**: Production Ready | Apache 2.0 License  
+[→ View on GitHub](https://github.com/jvachier/Personality-classification)
 
 ---
 

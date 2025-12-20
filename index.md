@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-<img src="/assets/images/profile.jpg" alt="Jeremy Vachier" width="200" style="border-radius: 50%; margin-bottom: 20px;">
+<img src="/assets/images/profile.jpg" alt="Jeremy Vachier" width="200" height="200" style="border-radius: 50%; margin-bottom: 20px; object-fit: cover;">
 
 # Jeremy Vachier
 
@@ -11,14 +11,19 @@ title: Home
 
 ## About
 
-I am an Associate Director of Data Science at AstraZeneca Sweden, where I build production machine learning systems for pharmaceutical manufacturing. I hold a PhD in Theoretical Physics from the Max Planck Institute and completed postdoctoral research at NORDITA Stockholm.
+I am an Associate Director of Data Science building production machine learning systems for pharmaceutical manufacturing that combine rigorous GxP compliance with cutting-edge ML techniques. My journey from theoretical physics to industrial ML gives me a unique perspective on solving complex problems at the intersection of fundamental science and practical engineering.
+
+I hold a PhD in Theoretical Physics from the Max Planck Institute for Dynamics and Self-Organization, where I specialized in stochastic processes and non-equilibrium statistical mechanics. After completing a Postdoctoral position followed by a Researcher position at NORDITA (Nordic Institute for Theoretical Physics) in Applied Mathematics, I transitioned to industry, bringing deep mathematical foundations to real-world ML challenges.
 
 ## Current Focus
 
-- Production ML systems for pharmaceutical manufacturing
-- From-scratch implementations of deep learning architectures
-- Research at the intersection of physics and machine learning
-- Competitive machine learning (Kaggle Expert)
+- **Production ML Systems**: Building GxP-compliant models for pharmaceutical manufacturing (autoencoders, VAEs, RL, GenAI, predictive maintenance)
+- **From-Scratch Implementations**: Building deep learning architectures without pre-trained models to deeply understand fundamentals (Transformers, attention mechanisms, custom training pipelines)
+- **Physics-Informed ML**: Applying stochastic process theory and statistical physics to machine learning problems
+- **Competitive ML**: Kaggle Expert 
+- **Open Source Research Tools**: Scientific literature RAG systems, GPU-accelerated implementations, production-grade ML pipelines
+
+
 
 ---
 
