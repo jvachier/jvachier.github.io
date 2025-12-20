@@ -1,0 +1,37 @@
+# Site settings
+title: Jeremy Vachier
+description: Theoretical Physicist | Machine Learning Researcher | Data Scientist
+url: "https://jvachier.github.io"
+
+# Theme
+theme: jekyll-theme-minimal
+
+# Author info
+author:
+  name: Jeremy Vachier
+  linkedin: your-linkedin-username
+  github: jvachier
+  kaggle: jvachier
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections for blog posts
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Navigation
+header_pages:
+  - index.md
+  - research.md
+  - projects.md
+  - blog.md
+
+# Security settings
+strict_front_matter: true
+safe: true
