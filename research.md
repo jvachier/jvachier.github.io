@@ -5,8 +5,6 @@ title: Research
 
 # Research
 
-## Academic Background
-
 ## Research Interests
 
 - Active Matter & Collective Behavior
