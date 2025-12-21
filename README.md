@@ -2,7 +2,6 @@
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://jvachier.github.io)
 [![Jekyll](https://img.shields.io/badge/Jekyll-Minimal%20Theme-red)](https://jekyllrb.com/)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 Personal website showcasing research, projects, and technical expertise in machine learning, data science, and computational physics.
 
