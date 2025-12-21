@@ -17,7 +17,7 @@ author:
 # Build settings
 markdown: kramdown
 kramdown:
-  math_engine: mathjax
+  math_engine: katex
   syntax_highlighter: rouge
 plugins:
   - jekyll-feed
