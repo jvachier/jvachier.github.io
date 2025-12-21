@@ -1,211 +1,256 @@
 ---
 layout: default
-title: Neural Network Math - Adam Optimization
+title: Building a Neural Network from Scratch - Understanding Adam Optimization
 date: 2025-12-21
-excerpt: Comprehensive mathematical breakdown of neural network implementation with Adam optimization for digit classification.
+excerpt: A deep dive into the mathematics behind neural networks and the Adam optimizer, implemented from scratch in NumPy for digit classification.
 ---
 
-# Mathematical Documentation: Neural Network with Adam Optimization
+# Building a Neural Network from Scratch: Understanding Adam Optimization
 
-A comprehensive mathematical breakdown of all equations and operations implemented in a neural network for digit classification, featuring the Adam optimization algorithm.
+When I set out to build a digit classifier from scratch, I wanted to truly understand what happens under the hood of modern neural networks. This post is a deep dive into the mathematics behind a three-layer neural network using the Adam optimization algorithm, no black boxes, just pure NumPy and math.
 
-**[→ View Implementation on GitHub](https://github.com/jvachier/Image_classification_neural_network_numpy-Adam-Optimization)**
+**[→ View Full Implementation on GitHub](https://github.com/jvachier/Image_classification_neural_network_numpy-Adam-Optimization)**
 
-## Overview
+## Why Build from Scratch?
 
-This post provides detailed mathematical formulations for:
-- Activation functions (ReLU, Sigmoid, Softmax)
-- Loss and cost functions
-- Forward and backward propagation
-- Adam optimization algorithm
-- Performance metrics
+Modern deep learning frameworks like TensorFlow and PyTorch are powerful, but they abstract away the underlying mathematics. Building a neural network from first principles helps us understand:
+
+- How gradients actually flow backward through the network
+- Why Adam optimizer is so effective compared to vanilla gradient descent
+- What happens during each forward and backward pass
+- How to debug training issues when they arise
+
+## The Challenge: Digit Classification
+
+**Task:** Classify handwritten digits (0-9) from 28×28 grayscale images
 
 **Network Architecture:**
-- Input: 784 features (28×28 images)
-- Hidden Layer 1: 128 neurons (ReLU)
-- Hidden Layer 2: 40 neurons (ReLU)
-- Output Layer: 10 neurons (Softmax)
+- **Input Layer:** 784 neurons (flattened 28×28 images)
+- **Hidden Layer 1:** 128 neurons with ReLU activation
+- **Hidden Layer 2:** 40 neurons with ReLU activation  
+- **Output Layer:** 10 neurons with Softmax (one per digit class)
+
+**Total Parameters:** 105,898 trainable weights and biases
 
 ---
 
-## 1. Activation Functions
+## Part 1: The Building Blocks
 
-### ReLU (Rectified Linear Unit)
+### Activation Functions
 
-**Function:**
-$$\text{ReLU}(x) = \max(0, x)$$
+Neural networks need non-linearity to learn complex patterns. I used two key activation functions:
 
-**Derivative:**
-$$\frac{d\text{ReLU}(x)}{dx} = \begin{cases} 0 & \text{if } x \leq 0 \\ 1 & \text{if } x > 0 \end{cases}$$
+**ReLU (Rectified Linear Unit)** for hidden layers:
+$$\text{ReLU}(x) = \max(0, x)\,.$$
 
-**Purpose:** Introduces non-linearity while avoiding vanishing gradient problem.
+Why ReLU? It's simple, fast, and avoids the vanishing gradient problem that plagues sigmoid activations in deep networks. The derivative is equally simple:
 
-### Softmax
+$$\frac{d\text{ReLU}(x)}{dx} = \begin{cases} 0 & \text{if } x \leq 0 \\ 1 & \text{if } x > 0 \end{cases}\,.$$
 
-**Function:**
-$$\text{Softmax}(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{n} e^{x_j}}$$
+**Softmax** for the output layer:
+$$\text{Softmax}(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{10} e^{x_j}}\,.$$
 
-**Properties:**
-- Output sums to 1: $\sum \text{Softmax}(x_i) = 1$
-- Each output in range (0, 1)
-- Converts logits to probability distribution
+Softmax converts raw scores into a probability distribution, perfect for multi-class classification. The outputs sum to 1, making them interpretable as class probabilities.
 
----
+### Loss Function
 
-## 2. Loss and Cost Functions
+I used **Mean Squared Error (MSE)** to measure prediction quality:
 
-### Mean Squared Error (MSE)
+$$J = \frac{1}{N} \sum_{i=1}^{N} (y_{\text{true}}^{(i)} - y_{\text{pred}}^{(i)})^2\,.$$
 
-**Per-sample error:**
-$$\text{MSE}_{\text{sample}} = (y_{\text{true}} - y_{\text{pred}})^2$$
-
-**Total cost:**
-$$J = \frac{1}{N} \sum_{i=1}^{N} (y_{\text{true}}^{(i)} - y_{\text{pred}}^{(i)})^2$$
+While cross-entropy is more common for classification, MSE works well here and simplifies the math for backpropagation.
 
 ---
 
-## 3. Forward Propagation
+## Part 2: Forward Propagation
 
-### Layer 1 (Input → Hidden 1)
+Forward propagation is the process of transforming input images into predictions. Each layer performs two operations: linear transformation and activation.
 
-**Linear transformation:**
-$$Z^{[1]} = W^{[1]} X + b^{[1]}$$
+### Layer 1: Input → Hidden 1
 
-**Activation:**
-$$A^{[1]} = \text{ReLU}(Z^{[1]})$$
+$$Z^{[1]} = W^{[1]} X + b^{[1]}\,,$$
+$$A^{[1]} = \text{ReLU}(Z^{[1]})\,,$$
 
-**Dimensions:**
-- $X$: (784 × m) where m is batch size
-- $W^{[1]}$: (128 × 784)
-- $b^{[1]}$: (128 × 1), broadcasted to (128 × m)
+where:
+- $X$: Input batch of images (784 × m)
+- $W^{[1]}$: Weight matrix (128 × 784)
+- $b^{[1]}$: Bias vector (128 × 1)
+- $A^{[1]}$: Activated output (128 × m)
 
-### Layer 2 (Hidden 1 → Hidden 2)
+### Layer 2: Hidden 1 → Hidden 2
 
-$$Z^{[2]} = W^{[2]} A^{[1]} + b^{[2]}$$
-$$A^{[2]} = \text{ReLU}(Z^{[2]})$$
+$$Z^{[2]} = W^{[2]} A^{[1]} + b^{[2]}\,,$$
+$$A^{[2]} = \text{ReLU}(Z^{[2]})\,.$$
 
-### Layer 3 (Hidden 2 → Output)
+### Layer 3: Hidden 2 → Output
 
-$$Z^{[3]} = W^{[3]} A^{[2]} + b^{[3]}$$
-$$A^{[3]} = \text{Softmax}(Z^{[3]})$$
+$$Z^{[3]} = W^{[3]} A^{[2]} + b^{[3]}\,,$$
+$$A^{[3]} = \text{Softmax}(Z^{[3]})\,.$$
+
+The final output $A^{[3]}$ gives us 10 probabilities, one for each digit class.
 
 ---
 
-## 4. Backpropagation
+## Part 3: Backpropagation - Where the Magic Happens
+
+Backpropagation computes how much each weight contributed to the error, allowing us to update them in the right direction. This is where calculus and the chain rule shine.
 
 ### Output Layer Gradient
 
-**Error at output:**
-$$\delta^{[3]} = A^{[3]} - Y$$
+Starting from the output, the error signal is remarkably simple with MSE and Softmax:
 
-**Weight gradient:**
-$$\frac{\partial J}{\partial W^{[3]}} = \delta^{[3]} \cdot (A^{[2]})^T$$
+$$\delta^{[3]} = A^{[3]} - Y\,.$$
 
-**Bias gradient:**
-$$\frac{\partial J}{\partial b^{[3]}} = \frac{1}{m}\sum_{i=1}^{m} \delta_i^{[3]}$$
+This is just the difference between predictions and true labels! From here we can compute weight and bias gradients:
+
+$$\frac{\partial J}{\partial W^{[3]}} = \delta^{[3]} \cdot (A^{[2]})^T\,,$$
+$$\frac{\partial J}{\partial b^{[3]}} = \frac{1}{m}\sum_{i=1}^{m} \delta_i^{[3]}\,.$$
 
 ### Hidden Layer Gradients
 
-**Error propagation:**
-$$\delta^{[2]} = (W^{[3]})^T \delta^{[3]} \odot \text{ReLU}'(Z^{[2]})$$
+For hidden layers, we propagate the error backward using the chain rule:
 
-Where $\odot$ denotes element-wise multiplication (Hadamard product).
+$$\delta^{[2]} = (W^{[3]})^T \delta^{[3]} \odot \text{ReLU}'(Z^{[2]})\,.$$
+
+The $\odot$ symbol means element-wise multiplication (Hadamard product). The ReLU derivative acts as a gate—it only lets gradients flow through neurons that were active (positive) during forward propagation.
+
+We repeat this process for all layers, computing gradients from output to input.
 
 ---
 
-## 5. Adam Optimization Algorithm
+## Part 4: Adam Optimization - The Secret Sauce
 
-Adam (Adaptive Moment Estimation) combines momentum and RMSprop for efficient optimization.
+Standard gradient descent updates weights by simply subtracting the gradient times a learning rate:
 
-### Hyperparameters
+$$W = W - \alpha \nabla J\,,$$
 
-$$\beta_1 = 0.9 \quad \text{(momentum decay rate)}$$
-$$\beta_2 = 0.99 \quad \text{(RMSprop decay rate)}$$
-$$\epsilon = 10^{-8} \quad \text{(numerical stability)}$$
+but this is slow and can get stuck. Enter **Adam (Adaptive Moment Estimation)**, which combines the best ideas from momentum and RMSprop.
 
-### First Moment (Momentum)
+### Why Adam Works
 
-$$m_t^{[l]} = \beta_1 \cdot m_{t-1}^{[l]} + (1 - \beta_1) \cdot \frac{\partial J}{\partial W^{[l]}}$$
+Adam maintains two moving averages for each parameter:
 
-**Interpretation:** Exponentially weighted average of past gradients (velocity).
+1. **First moment (momentum):** Exponentially weighted average of past gradients
+2. **Second moment (RMSprop):** Exponentially weighted average of squared past gradients
 
-### Second Moment (RMSprop)
+**Momentum equation:**
+$$m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla J\,.$$
 
-$$v_t^{[l]} = \beta_2 \cdot v_{t-1}^{[l]} + (1 - \beta_2) \cdot \left(\frac{\partial J}{\partial W^{[l]}}\right)^2$$
+Think of momentum as velocity, it helps the optimizer build up speed in directions with consistent gradients and dampens oscillations.
 
-**Interpretation:** Exponentially weighted average of squared gradients (acceleration).
+**RMSprop equation:**
+$$v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla J)^2\,.$$
+
+This tracks the "variance" of gradients. Parameters with large, noisy gradients get smaller effective learning rates.
 
 ### Bias Correction
 
-**Corrected first moment:**
-$$\hat{m}_t^{[l]} = \frac{m_t^{[l]}}{1 - \beta_1^t}$$
+Since we initialize $m_0 = 0$ and $v_0 = 0$, early estimates are biased toward zero. Adam corrects this:
 
-**Corrected second moment:**
-$$\hat{v}_t^{[l]} = \frac{v_t^{[l]}}{1 - \beta_2^t}$$
+$$\hat{m}_t = \frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 - \beta_2^t}\,.$$
 
-### Parameter Update Rule
+### The Update Rule
 
-$$W_t^{[l]} = W_{t-1}^{[l]} - \alpha \cdot \frac{\hat{m}_t^{[l]}}{\sqrt{\hat{v}_t^{[l]}} + \epsilon}$$
+Finally, we update parameters using both moments:
 
----
+$$W_t = W_{t-1} - \alpha \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}\,.$$
 
-## 6. Performance Metrics
+Each parameter gets its own adaptive learning rate based on its gradient history. This makes Adam robust and fast.
 
-### Categorical Accuracy
-
-$$\text{Accuracy} = \frac{1}{m}\sum_{i=1}^{m} \mathbb{1}[\arg\max(y_{\text{true}}^{(i)}) = \arg\max(y_{\text{pred}}^{(i)})]$$
-
-### R² Score (Coefficient of Determination)
-
-$$R^2 = 1 - \frac{\sum_i (y_{\text{true}}^{(i)} - y_{\text{pred}}^{(i)})^2}{\sum_i (y_{\text{true}}^{(i)} - \bar{y}_{\text{true}})^2}$$
+**Hyperparameters I used:**
+- $\beta_1 = 0.9$ (momentum decay)
+- $\beta_2 = 0.99$ (RMSprop decay)
+- $\epsilon = 10^{-8}$ (numerical stability)
 
 ---
 
-## Training Loop Summary
+## Part 5: Training Loop
 
-For each iteration t = 1, 2, ..., T:
+Putting it all together, each training iteration follows this sequence:
 
-1. **Forward Pass**: Compute $Z^{[l]}$ and $A^{[l]}$ for l = 1, 2, 3
-2. **Compute Loss**: $\text{Loss} = \text{MSE}(A^{[3]}, Y)$
-3. **Backward Pass**: Compute gradients $\partial J/\partial W^{[l]}$ and $\partial J/\partial b^{[l]}$
-4. **Adam Update**:
-   - Update first moments: $m_t = \beta_1 m_{t-1} + (1-\beta_1)\nabla J$
-   - Update second moments: $v_t = \beta_2 v_{t-1} + (1-\beta_2)(\nabla J)^2$
-   - Bias correction: $\hat{m}_t = m_t/(1-\beta_1^t)$, $\hat{v}_t = v_t/(1-\beta_2^t)$
-   - Parameter update: $\theta_t = \theta_{t-1} - \alpha \cdot \hat{m}_t/(\sqrt{\hat{v}_t} + \epsilon)$
-5. **Metrics**: Calculate accuracy, RMSE, R², and cost
-
----
-
-## Mathematical Advantages of Adam
-
-1. **Adaptive Learning Rates**: Each parameter has its own effective learning rate based on gradient history
-2. **Momentum**: Helps escape local minima and accelerates convergence
-3. **Bias Correction**: Ensures proper updates even in early training stages
-4. **Robust to Hyperparameters**: Default values ($\beta_1=0.9$, $\beta_2=0.99$) work well for most problems
-5. **Efficient**: Computationally similar to standard SGD with minimal memory overhead
+1. **Forward Pass:** Compute activations $A^{[1]}, A^{[2]}, A^{[3]}$
+2. **Compute Loss:** $J = \text{MSE}(A^{[3]}, Y)$
+3. **Backward Pass:** Compute all gradients $\partial J/\partial W^{[l]}, \partial J/\partial b^{[l]}$
+4. **Adam Update:**
+   - Update momentum: $m_t = \beta_1 m_{t-1} + (1-\beta_1)\nabla J$
+   - Update RMSprop: $v_t = \beta_2 v_{t-1} + (1-\beta_2)(\nabla J)^2$
+   - Bias correction: $\hat{m}_t, \hat{v}_t$
+   - Update parameters: $W \leftarrow W - \alpha \frac{\hat{m}_t}{\sqrt{\hat{v}_t}+\epsilon}$
+5. **Track Metrics:** Accuracy, R², RMSE
 
 ---
 
-## Implementation Notes
+## Results and Insights
+
+Building this network from scratch revealed several key insights:
+
+### Why Adam Outperforms SGD
+
+1. **Adaptive learning rates:** Each parameter adjusts at its own pace
+2. **Momentum:** Helps escape local minima and accelerates convergence
+3. **Robustness:** Default hyperparameters ($\beta_1=0.9, \beta_2=0.99$) work remarkably well
+4. **Efficiency:** Minimal computational overhead compared to vanilla SGD
+
+### Network Design Decisions
+
+- **Why 128 → 40 neurons?** This creates a bottleneck that forces the network to learn compressed representations
+- **Why ReLU over sigmoid?** Faster computation and no vanishing gradients
+- **Why MSE over cross-entropy?** Both work, but MSE simplifies derivative computation
+
+### Performance Metrics
+
+**Accuracy:** Measures the proportion of correct predictions
+$$\text{Accuracy} = \frac{1}{m}\sum_{i=1}^{m} \mathbb{1}[\arg\max(y_{\text{true}}^{(i)}) = \arg\max(y_{\text{pred}}^{(i)})]\,,$$
+
+where $\mathbb{1}[\cdot]$ is the indicator function that returns 1 if the condition is true, 0 otherwise. In other words: for each sample, we check if the predicted class (highest probability) matches the true class (position of 1 in one-hot encoding).
+
+**R² Score:** Measures fit quality (1 = perfect, 0 = poor)
+$$R^2 = 1 - \frac{\sum_i (y_{\text{true}}^{(i)} - y_{\text{pred}}^{(i)})^2}{\sum_i (y_{\text{true}}^{(i)} - \bar{y}_{\text{true}})^2}\,.$$
+
+---
+
+## Key Takeaways
+
+1. **Understanding beats abstraction:** Building from scratch deepened my intuition about neural networks far more than using high-level APIs
+2. **Adam is worth it:** The complexity of implementing Adam pays off in faster, more stable training
+3. **Mathematics matters:** Every modern deep learning technique is rooted in elegant mathematical principles
+4. **NumPy is powerful:** You don't need specialized frameworks for educational implementations
+
+---
+
+## What's Next?
+
+Possible extensions to explore:
+- Implement dropout regularization
+- Try different network architectures (deeper or wider)
+- Experiment with other optimizers (RMSprop, AdaGrad, Nadam)
+- Add batch normalization
+- Visualize learned features in hidden layers
+
+---
+
+## Implementation Details
 
 **Network Configuration:**
 
-| Layer | Input Size | Output Size | Activation | Parameters |
-|-------|------------|-------------|------------|------------|
+| Layer | Input | Output | Activation | Parameters |
+|-------|-------|--------|------------|------------|
 | Input | 784 | 784 | - | 0 |
-| Hidden 1 | 784 | 128 | ReLU | $W_1$(128×784), $b_1$(128×1) |
-| Hidden 2 | 128 | 40 | ReLU | $W_2$(40×128), $b_2$(40×1) |
-| Output | 40 | 10 | Softmax | $W_3$(10×40), $b_3$(10×1) |
+| Hidden 1 | 784 | 128 | ReLU | 100,480 |
+| Hidden 2 | 128 | 40 | ReLU | 5,160 |
+| Output | 40 | 10 | Softmax | 410 |
 
-**Total Parameters:** 128×784 + 128 + 40×128 + 40 + 10×40 + 10 = 105,898
-
----
-
-## Reference
-
-Kingma, D. P., & Ba, J. (2014). Adam: A Method for Stochastic Optimization. *arXiv preprint arXiv:1412.6980*.
+**[View the complete implementation on GitHub →](https://github.com/jvachier/Image_classification_neural_network_numpy-Adam-Optimization)**
 
 ---
 
-**Tags:** #NeuralNetworks #DeepLearning #Optimization #Adam #Mathematics #MachineLearning
+## References
+
+Kingma, D. P., & Ba, J. (2014). *Adam: A Method for Stochastic Optimization.* arXiv:1412.6980.
+
+---
+
+**Tags:** #DeepLearning #NeuralNetworks #Adam #Optimization #NumPy #FromScratch #Mathematics
+
+*Have questions or suggestions? Feel free to reach out or open an issue on the GitHub repository!*
+
