@@ -9,6 +9,8 @@ excerpt: Comprehensive mathematical breakdown of neural network implementation w
 
 A comprehensive mathematical breakdown of all equations and operations implemented in a neural network for digit classification, featuring the Adam optimization algorithm.
 
+**[→ View Implementation on GitHub](https://github.com/jvachier/Image_classification_neural_network_numpy-Adam-Optimization)**
+
 ## Overview
 
 This post provides detailed mathematical formulations for:
