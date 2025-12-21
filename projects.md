@@ -94,12 +94,14 @@ A high-performance C++ simulation framework for modeling active Brownian particl
 
 **Performance Benchmarks (Apple M2, 1000 timesteps):**
 
-| Particles | CPU (1 thread) | OpenMP (6 cores) | GPU (Metal) | GPU Speedup |
-|-----------|----------------|------------------|-------------|-------------|
-| 100       | 0.026s         | 0.103s           | 0.096s      | 0.3×        |
-| 1,000     | 16s            | 6s               | 0.46s       | **34.8×**   |
-| 2,000     | 65s            | 24s              | 0.88s       | **73.9×**   |
-| 5,000     | 34.4s          | 14.3s            | 1.7s        | **20.2×**   |
+| Particles | CPU (1 thread) | CPU (OpenMP 6) | GPU (Metal) | GPU vs 1 CPU | GPU vs OpenMP |
+|-----------|----------------|----------------|-------------|--------------|---------------|
+| 100       | 0.026s         | 0.103s         | 0.096s      | 0.3×         | 0.9×          |
+| 200       | 0.075s         | 0.125s         | 0.115s      | 0.7×         | 1.1×          |
+| 500       | 0.401s         | 0.269s         | 0.225s      | **1.8×**     | **1.2×**      |
+| 1,000     | 1.514s         | 0.747s         | 0.445s      | **3.4×**     | **1.7×**      |
+| 2,000     | 5.638s         | 2.389s         | 0.601s      | **9.4×**     | **4.0×**      |
+| 5,000     | 34.393s        | 13.903s        | 1.262s      | **27.3×**    | **11.0×**     |
 
 **Physical Model:**
 - Active Brownian particles with self-propulsion
