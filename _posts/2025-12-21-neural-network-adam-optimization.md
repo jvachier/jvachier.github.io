@@ -41,14 +41,22 @@ Modern deep learning frameworks like TensorFlow and PyTorch are powerful, but th
 Neural networks need non-linearity to learn complex patterns. I used two key activation functions:
 
 **ReLU (Rectified Linear Unit)** for hidden layers:
-$\text{ReLU}(x) = \max(0, x)\,.$
+
+$$
+\text{ReLU}(x) = \max(0, x)
+$$
 
 Why ReLU? It's simple, fast, and avoids the vanishing gradient problem that plagues sigmoid activations in deep networks. The derivative is equally simple:
 
-$\frac{d\text{ReLU}(x)}{dx} = \begin{cases} 0 & \text{if } x \leq 0 \\ 1 & \text{if } x > 0 \end{cases}\,.$
+$$
+\frac{d\text{ReLU}(x)}{dx} = \begin{cases} 0 & \text{if } x \leq 0 \\ 1 & \text{if } x > 0 \end{cases}
+$$
 
 **Softmax** for the output layer:
-$\text{Softmax}(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{10} e^{x_j}}\,.$
+
+$$
+\text{Softmax}(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{10} e^{x_j}}
+$$
 
 Softmax converts raw scores into a probability distribution, perfect for multi-class classification. The outputs sum to 1, making them interpretable as class probabilities.
 
@@ -56,7 +64,9 @@ Softmax converts raw scores into a probability distribution, perfect for multi-c
 
 I used **Mean Squared Error (MSE)** to measure prediction quality:
 
-$J = \frac{1}{N} \sum_{i=1}^{N} (y_{\text{true}}^{(i)} - y_{\text{pred}}^{(i)})^2\,.$
+$$
+J = \frac{1}{N} \sum_{i=1}^{N} (y_{\text{true}}^{(i)} - y_{\text{pred}}^{(i)})^2
+$$
 
 While cross-entropy is more common for classification, MSE works well here and simplifies the math for backpropagation.
 
@@ -68,8 +78,13 @@ Forward propagation is the process of transforming input images into predictions
 
 ### Layer 1: Input → Hidden 1
 
-$Z^{[1]} = W^{[1]} X + b^{[1]}\,,$
-$A^{[1]} = \text{ReLU}(Z^{[1]})\,,$
+$$
+Z^{[1]} = W^{[1]} X + b^{[1]}
+$$
+
+$$
+A^{[1]} = \text{ReLU}(Z^{[1]})
+$$
 
 where:
 - $X$: Input batch of images (784 × m)
@@ -79,13 +94,23 @@ where:
 
 ### Layer 2: Hidden 1 → Hidden 2
 
-$Z^{[2]} = W^{[2]} A^{[1]} + b^{[2]}\,,$
-$A^{[2]} = \text{ReLU}(Z^{[2]})\,.$
+$$
+Z^{[2]} = W^{[2]} A^{[1]} + b^{[2]}
+$$
+
+$$
+A^{[2]} = \text{ReLU}(Z^{[2]})
+$$
 
 ### Layer 3: Hidden 2 → Output
 
-$Z^{[3]} = W^{[3]} A^{[2]} + b^{[3]}\,,$
-$A^{[3]} = \text{Softmax}(Z^{[3]})\,.$
+$$
+Z^{[3]} = W^{[3]} A^{[2]} + b^{[3]}
+$$
+
+$$
+A^{[3]} = \text{Softmax}(Z^{[3]})
+$$
 
 The final output $A^{[3]}$ gives us 10 probabilities, one for each digit class.
 
@@ -99,18 +124,27 @@ Backpropagation computes how much each weight contributed to the error, allowing
 
 Starting from the output, the error signal is remarkably simple with MSE and Softmax:
 
-$\delta^{[3]} = A^{[3]} - Y\,.$
+$$
+\delta^{[3]} = A^{[3]} - Y
+$$
 
 This is just the difference between predictions and true labels! From here we can compute weight and bias gradients:
 
-$\frac{\partial J}{\partial W^{[3]}} = \delta^{[3]} \cdot (A^{[2]})^T\,,$
-$\frac{\partial J}{\partial b^{[3]}} = \frac{1}{m}\sum_{i=1}^{m} \delta_i^{[3]}\,.$
+$$
+\frac{\partial J}{\partial W^{[3]}} = \delta^{[3]} \cdot (A^{[2]})^T
+$$
+
+$$
+\frac{\partial J}{\partial b^{[3]}} = \frac{1}{m}\sum_{i=1}^{m} \delta_i^{[3]}
+$$
 
 ### Hidden Layer Gradients
 
 For hidden layers, we propagate the error backward using the chain rule:
 
-$\delta^{[2]} = (W^{[3]})^T \delta^{[3]} \odot \text{ReLU}'(Z^{[2]})\,.$
+$$
+\delta^{[2]} = (W^{[3]})^T \delta^{[3]} \odot \text{ReLU}'(Z^{[2]})
+$$
 
 The $\odot$ symbol means element-wise multiplication (Hadamard product). The ReLU derivative acts as a gate—it only lets gradients flow through neurons that were active (positive) during forward propagation.
 
@@ -122,7 +156,9 @@ We repeat this process for all layers, computing gradients from output to input.
 
 Standard gradient descent updates weights by simply subtracting the gradient times a learning rate:
 
-$W = W - \alpha \nabla J\,,$
+$$
+W = W - \alpha \nabla J
+$$
 
 but this is slow and can get stuck. Enter **Adam (Adaptive Moment Estimation)**, which combines the best ideas from momentum and RMSprop.
 
@@ -134,12 +170,18 @@ Adam maintains two moving averages for each parameter:
 2. **Second moment (RMSprop):** Exponentially weighted average of squared past gradients
 
 **Momentum equation:**
-$m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla J\,.$
+
+$$
+m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla J
+$$
 
 Think of momentum as velocity, it helps the optimizer build up speed in directions with consistent gradients and dampens oscillations.
 
 **RMSprop equation:**
-$v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla J)^2\,.$
+
+$$
+v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla J)^2
+$$
 
 This tracks the "variance" of gradients. Parameters with large, noisy gradients get smaller effective learning rates.
 
@@ -147,13 +189,17 @@ This tracks the "variance" of gradients. Parameters with large, noisy gradients 
 
 Since we initialize $m_0 = 0$ and $v_0 = 0$, early estimates are biased toward zero. Adam corrects this:
 
-$\hat{m}_t = \frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 - \beta_2^t}\,.$
+$$
+\hat{m}_t = \frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 - \beta_2^t}
+$$
 
 ### The Update Rule
 
 Finally, we update parameters using both moments:
 
-$W_t = W_{t-1} - \alpha \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}\,.$
+$$
+W_t = W_{t-1} - \alpha \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}
+$$
 
 Each parameter gets its own adaptive learning rate based on its gradient history. This makes Adam robust and fast.
 
@@ -200,12 +246,18 @@ Building this network from scratch revealed several key insights:
 ### Performance Metrics
 
 **Accuracy:** Measures the proportion of correct predictions
-$\text{Accuracy} = \frac{1}{m}\sum_{i=1}^{m} \mathbb{1}[\arg\max(y_{\text{true}}^{(i)}) = \arg\max(y_{\text{pred}}^{(i)})]\,,$
+
+$$
+\text{Accuracy} = \frac{1}{m}\sum_{i=1}^{m} \mathbb{1}[\arg\max(y_{\text{true}}^{(i)}) = \arg\max(y_{\text{pred}}^{(i)})]
+$$
 
 where $\mathbb{1}[\cdot]$ is the indicator function that returns 1 if the condition is true, 0 otherwise. In other words: for each sample, we check if the predicted class (highest probability) matches the true class (position of 1 in one-hot encoding).
 
 **R² Score:** Measures fit quality (1 = perfect, 0 = poor)
-$R^2 = 1 - \frac{\sum_i (y_{\text{true}}^{(i)} - y_{\text{pred}}^{(i)})^2}{\sum_i (y_{\text{true}}^{(i)} - \bar{y}_{\text{true}})^2}\,.$
+
+$$
+R^2 = 1 - \frac{\sum_i (y_{\text{true}}^{(i)} - y_{\text{pred}}^{(i)})^2}{\sum_i (y_{\text{true}}^{(i)} - \bar{y}_{\text{true}})^2}
+$$
 
 ---
 
