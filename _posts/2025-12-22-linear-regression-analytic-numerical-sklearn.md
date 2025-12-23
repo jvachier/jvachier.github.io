@@ -11,6 +11,8 @@ When I set out to truly understand linear regression, I didn't just want to call
 
 **[→ View Full Implementation on Kaggle](https://www.kaggle.com/code/jvachier/lr-analytic-numerical-methods-vs-sklearn)**
 
+**[→ View Full Implementation on GitHub](https://github.com/jvachier/Linear-Regression-Analytic-and-Numerical-Methods-vs-Sklearn)**
+
 ## The Problem: Predicting Salary from Experience
 
 **Task:** Predict salary as a function of years of experience using univariate linear regression
