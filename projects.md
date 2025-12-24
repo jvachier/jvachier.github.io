@@ -80,6 +80,10 @@ A comprehensive end-to-end system integrating speech recognition, sentiment anal
 
 *Performance comparison across CPU and GPU implementations showing up to 27× speedup on Apple Silicon.*
 
+![Particles Video](/assets/images/particles_standard.gif)
+
+*Simulation of 1000 active Brownian particles under 3D cylindrical confinement, demonstrating collective motion and particle-particle interactions with Lennard-Jones repulsion.*
+
 A high-performance C++ simulation framework for modeling active Brownian particles (ABPs) under cylindrical confinement in 3D space. Implements Euler-Maruyama algorithm for Langevin dynamics with dual CPU/GPU implementations.
 
 **Key Features:**
