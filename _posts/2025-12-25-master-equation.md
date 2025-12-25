@@ -112,7 +112,7 @@ where $Q_{nm} = \lim\limits_{s \to 0} \dfrac{P_{nm}(s)}{s}$ denotes the infinite
 
 Combining everything, we arrive at the forward **master equation**:
 
-$$\boxed{\frac{dP_{nm}(t)}{dt} = \sum_{\substack{k \neq m}}^{+\infty} P_{nk}(t) Q_{km} - P_{nm}(t) Q_{mk}}. \tag{8}$$
+$$\boxed{\frac{dP_{nm}(t)}{dt} = \sum_{\substack{k \neq m}}^{+\infty} \left[ P_{nk}(t) Q_{km} - P_{nm}(t) Q_{mk}\right]}. \tag{8}$$
 
 ## Physical Interpretation
 
