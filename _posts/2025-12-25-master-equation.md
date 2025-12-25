@@ -1,8 +1,8 @@
 ---
-title: "Deriving the Master Equation from Chapman-Kolmogorov"
+layout: default
+title: Deriving the Master Equation from Chapman-Kolmogorov
 date: 2025-12-25
-tags: [stochastic-processes, master-equation, theoretical-physics, markov-chains]
-description: "A rigorous derivation of the master equation for continuous-time Markov chains using the Chapman-Kolmogorov equation"
+excerpt: A rigorous mathematical derivation of the master equation for jump Markov processes, with applications spanning bacterial biofilm dynamics, antibiotic resistance strategies, and machine learning optimization.
 ---
 
 # Deriving the Master Equation from Chapman-Kolmogorov
