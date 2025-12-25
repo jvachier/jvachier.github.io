@@ -84,7 +84,7 @@ Taking the limit as $s \to 0$ of the previous equation gives:
 $$
 \begin{aligned}
 \lim_{s \to 0} \frac{P_{nm}(t+s) - P_{nm}(t)}{s} = \lim_{s \to 0} \frac{1}{s} &\left[\sum_{\substack{k \neq m}}^{+\infty} P_{nk}(t) P_{km}(s) \right. \\
-&\quad \left. + P_{nm}(t) \left(P_{mm}(s) - 1\right)\right]
+&\quad \left. + P_{nm}(t) \left(P_{mm}(s) - 1\right)\right].
 \end{aligned}
 $$
 
@@ -93,11 +93,8 @@ Noticing $1=\sum\limits_{k=0}^{+\infty}P_{mk}(s) \Leftrightarrow 1 = \sum\limits
 $$
 \begin{aligned}
 \lim_{s \to 0} \frac{P_{nm}(t+s) - P_{nm}(t)}{s} = \lim_{s \to 0} \frac{1}{s} &\left[\sum_{\substack{k \neq m}}^{+\infty} P_{nk}(t) P_{km}(s) \right. \\
-&\quad \left. - P_{nm}(t) \sum\limits_{k\neq m}^{+\infty}P_{mk}(s)\right],
+&\quad \left. - P_{nm}(t) \sum\limits_{k\neq m}^{+\infty}P_{mk}(s)\right].
 \end{aligned}
-$$
-$$
-\lim_{s \to 0} \frac{P_{nm}(t+s) - P_{nm}(t)}{s} = \lim_{s \to 0} \frac{1}{s} \sum_{\substack{k \neq m}}^{+\infty} \left[P_{nk}(t) P_{km}(s) - P_{nm}(t)P_{mk}(s)\right].
 $$
 
 Equivalently,
@@ -112,7 +109,7 @@ where $Q_{nm} = \lim\limits_{s \to 0} \dfrac{P_{nm}(s)}{s}$ denotes the infinite
 
 Combining everything, we arrive at the forward **master equation**:
 
-$$\boxed{\frac{dP_{nm}(t)}{dt} = \sum_{\substack{k \neq m}}^{+\infty} \left[ P_{nk}(t) Q_{km} - P_{nm}(t) Q_{mk}\right]}. \tag{8}$$
+$$\boxed{\frac{dP_{nm}(t)}{dt} = \sum_{\substack{k \neq m}}^{+\infty} \left[ P_{nk}(t) Q_{km} - P_{nm}(t) Q_{mk}\right]} \tag{8}$$
 
 ## Physical Interpretation
 
@@ -127,7 +124,7 @@ This balance between probability gain and loss governs the time evolution of the
 
 An important special case of jump Markov processes is the **birth-death process**, where transitions are restricted to nearest neighbors in a one-dimensional state space. From state $n$, the system can only transition to $n+1$ (birth) or $n-1$ (death). For a birth-death process with birth rate $\lambda_n$ and death rate $\mu_n$ in state $n$, the master equation (8) simplifies to:
 
-$$\frac{dP_n(t)}{dt} = \lambda_{n-1} P_{n-1}(t) + \mu_{n+1} P_{n+1}(t) - (\lambda_n + \mu_n) P_n(t) \tag{9}$$
+$$\frac{dP_n(t)}{dt} = \lambda_{n-1} P_{n-1}(t) + \mu_{n+1} P_{n+1}(t) - (\lambda_n + \mu_n) P_n(t). \tag{9}$$
 
 Birth-death processes provide tractable yet powerful models across diverse applications, from population dynamics to bacterial colonization kinetics. A notable feature of birth-death processes is their potential for exact analytical solutions. In my research, I developed an exactly solvable birth-death model with time-dependent (temporal) attachment and detachment rates to quantify social cooperativity during bacterial reversible surface attachment in early biofilm formation (Lee and Vachier, 2020). This analytical solution enabled quantitative comparison of cooperative attachment strategies between different Pseudomonas aeruginosa strains.
 
