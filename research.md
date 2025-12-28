@@ -5,15 +5,13 @@ title: Research
 
 # Industry Experience
 
-Leading data science initiatives in pharmaceutical manufacturing with focus on GxP-compliant ML systems:
+Driving data science initiatives in pharmaceutical manufacturing with focus on GxP-compliant ML systems:
 
-* **Production ML Systems**: Deployed autoencoders and reinforcement learning models for process optimization 
-* **Team Leadership**: Managing postdoctoral researchers through KTH collaborations and master students
-* **Anomaly Detection**: Built production systems for quality control in pharmaceutical manufacturing
-* **Operator Training**: Developed ML-based systems for manufacturing operator decision support
-* **Research Integration**: Maintaining active research output while delivering business impact
+* **AI / ML and Generative AI**: Production-grade systems for process optimization and quality control
+* **Team Leadership**: Leading postdoctoral researchers and master students through KTH collaborations
+* **Research Integration**: Publishing peer-reviewed research while delivering production impact
 
-**Impact**: Bridging advanced ML research with regulatory requirements in pharmaceutical manufacturing
+**Impact**: Bridging cutting-edge ML research with regulatory requirements in pharmaceutical manufacturing
 
 
 # Research
