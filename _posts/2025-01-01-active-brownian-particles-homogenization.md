@@ -46,7 +46,7 @@ in which the following dimensionless numbers appear
 
 $$P_e^L = \frac{v_{oc}L}{D_c}, \quad P_F^L = \frac{F_c L}{D_c}, \quad P_r^L = \frac{D_{rc} L^2}{D_c}. \tag{7}$$
 
-The first two numbers $P_a^L$ and $P_e^L$ are the Péclet numbers associated to the active velocity and external force, respectively. In addition to the rotational time $\tau_r$ ($D_r \propto 1/\tau_r$), six characteristic time scales are identified: $t^{\text{diff}}_l=l^2/D_c$, $t^{\text{F}}_l=l/F_c$, $t^{\text{act}}_l=l/v_{oc}$, $t^{\text{diff}}_L=L^2/D_c$, $t^{\text{F}}_L=L/F_c$ and $t^{\text{act}}_L=L/v_{oc}$ associated with microscopic (macroscopic) diffusion and advections either given by the external force and the activity on the microscopic length scale $l$ (macroscopic length scale $L$). As a result, the ratio of characteristic time for diffusion and advections are the Péclet numbers
+The first two numbers $P_e^L$ and $P_F^L$ are the Péclet numbers associated to the active velocity and external force, respectively. In addition to the rotational time $\tau_r$ ($D_r \propto 1/\tau_r$), six characteristic time scales are identified: $t^{\text{diff}}_l=l^2/D_c$, $t^{\text{F}}_l=l/F_c$, $t^{\text{act}}_l=l/v_{oc}$, $t^{\text{diff}}_L=L^2/D_c$, $t^{\text{F}}_L=L/F_c$ and $t^{\text{act}}_L=L/v_{oc}$ associated with microscopic (macroscopic) diffusion and advections either given by the external force and the activity on the microscopic length scale $l$ (macroscopic length scale $L$). As a result, the ratio of characteristic time for diffusion and advections are the Péclet numbers
 
 $$P_e^{L,l} = \frac{t^{\text{diff}}_{L,l}}{t^{\text{act}}_{L,l}}, \quad P_F^{L,l} = \frac{t^{\text{diff}}_{L,l}}{t^{\text{F}}_{L,l}}. \tag{8}$$
 
