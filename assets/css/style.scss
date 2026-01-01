@@ -60,12 +60,21 @@ pre {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
-  text-align: center;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0;
 }
 
-/* Move equation tags to the right on their own line */
-.katex-display .tag {
-  float: right;
+/* Center the main equation content */
+.katex-display > .katex {
+  margin: 0 auto;
+}
+
+/* Position equation tags on the right without overlap */
+.katex-display .katex .tag {
+  position: absolute;
+  right: 0;
   margin-left: 1em;
 }
 
