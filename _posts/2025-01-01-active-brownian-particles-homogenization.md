@@ -1,8 +1,8 @@
 ---
+layout: default
 title: "Active Brownian Particles in 2D: Multiple Scale Analysis"
 date: 2025-01-01
-tags: [active-matter, physics, homogenization, stochastic-processes]
-description: "Deriving the effective equation for Active Brownian Particles using multiple scale expansion"
+excerpt: Deriving the effective equation for Active Brownian Particles using multiple scale expansion.
 ---
 
 ## Introduction
@@ -11,7 +11,7 @@ Active matter systems, from swimming bacteria to artificial microswimmers, exhib
 
 The answer lies in **homogenization theory** and **multiple scale analysis**, powerful asymptotic techniques that systematically derive effective macroscopic equations from microscopic dynamics. In this post, I demonstrate this approach using the Active Brownian Particle (ABP) in 2D, deriving how self-propulsion and rotational diffusion produce enhanced effective diffusion at the macroscale.
 
-While this is a pedagogical example, the methodology extends to far more complex systems. In my research on bioparticles in premelting ice ([Vachier & Wettlaufer, Phys. Rev. E, 2022](https://doi.org/10.1103/PhysRevE.105.024601); [Frontiers in Physics, 2022](https://doi.org/10.3389/fphy.2022.904836)), I applied these same techniques to systems where thermal regelation, chemotaxis, and bio-enhanced premelting all compete—phenomena critical for ice core dating and extremophile survival in glaciers.
+While this is a pedagogical example, the methodology extends to far more complex systems. In my research on bioparticles in premelting ice ([Vachier & Wettlaufer, Phys. Rev. E, 2022](https://doi.org/10.1103/PhysRevE.105.024601); [Frontiers in Physics, 2022](https://doi.org/10.3389/fphy.2022.904836)), I applied these same techniques to systems where thermal regelation, chemotaxis, and bio-enhanced premelting all compete, phenomena critical for ice core dating, climate change and extremophile survival in glaciers.
 
 ---
 
@@ -70,7 +70,7 @@ and using a power series ansatz
 
 $$P = P^0 + \epsilon P^1 + \epsilon^2 P^2, \tag{12}$$
 
-we derive a system of equation at each order in $\epsilon$, which are
+we derive a system of equation at each order in $\epsilon$ [1-3], which are 
 
 $$
 \begin{align*}
@@ -84,67 +84,64 @@ where $\mathcal{L}=\mathcal{M}-\mathcal{Q}$, with $\mathcal{M}=v_0\bm{n}\cdot\na
 
 $$P^0(\bm{r},\bm{R},\phi,t,T)=w(\bm{r},\phi)\rho^0(\bm{R},t,T). \tag{16}$$
 
-We integrate by parts over the microscopic variables $\bm{r}$ and $\phi$, and use the periodic boundary conditions, to obtain the so-called weak formulation of the leading order equation. To ensure the existence and uniqueness of $P^0$, we use the Lax-Milgram theorem, also known as the solvability condition or the Fredholm alternative. The external force $F$ is constant and as a result, $w$ is constant over the period: $w(\bm{r},\phi)=w(\phi)=\text{const}$.
+We integrate by parts over the microscopic variables $\bm{r}$ and $\phi$, and use the periodic boundary conditions, to obtain the so-called weak formulation of the leading order equation [8, 9]. To ensure the existence and uniqueness of $P^0$, we use the Lax-Milgram theorem, also known as the solvability condition [7, 11, 12] or the Fredholm alternative [13, 14]. The external force $F$ is constant and as a result, $w$ is constant over the period: $w(\bm{r},\phi)=w(\phi)=\text{const}$.
 
 The solvability condition for $\mathcal{O}(1/\epsilon)$  equation is 
 
-$$\int\limits_0^{2\pi}\frac{d\phi}{2\pi}\left(-\frac{\partial}{\partial t} P^0 - v_o \bm{n}\cdot \nabla_{\bm{R}}P^0 - \frac{\partial}{\partial X} \left[ F P^0 \right] \right) = 0$$
+$$\int\limits_0^{2\pi}\frac{d\phi}{2\pi}\left(-\frac{\partial}{\partial t} P^0 - v_o \bm{n}\cdot \nabla_{\bm{R}}P^0 - \frac{\partial}{\partial X} \left[ F P^0 \right] \right) = 0, \tag{17}$$
 
 which depends on the leading order result, $P^0$, from which we find
 
-$$\frac{\partial}{\partial t}\rho^0 = -\frac{\partial}{\partial X}\left[ F\rho^0 \right]$$
+$$\frac{\partial}{\partial t}\rho^0 = -\frac{\partial}{\partial X}\left[ F\rho^0 \right], \tag{18}$$
 
 and the $\mathcal{O}(1/\epsilon)$ equation becomes
 
-$$\mathcal{L}P^1 = - w v_{o} \bm{n}\cdot\nabla_{\bm{R}}\rho^0$$
+$$\mathcal{L}P^1 = - w v_{o} \bm{n}\cdot\nabla_{\bm{R}}\rho^0. \tag{19}$$
 
-The solution of Eq. (19) is
+The solution of Eq. (19) is [1, 6, 15, 16]
 
-$$P^1= - w v_{o}\bm{\alpha} \cdot \nabla_{\bm{R}}\rho^0$$
+$$P^1= - w v_{o}\bm{\alpha} \cdot \nabla_{\bm{R}}\rho^0, \tag{20}$$
 
 where $\bm{\alpha} = (\alpha_1(X) \cos(\phi),\alpha_2(Y) \sin(\phi))^T$, after which we find that
 
-$$\bm{\alpha} = \frac{1}{D_r}\bm{n}$$
+$$\bm{\alpha} = \frac{1}{D_r}\bm{n}. \tag{21}$$
 
 Substitution of $P^1$ into the $\mathcal{O}(1)$ equation and using the solvability condition 
 
-$$\int\limits_0^{2\pi}\frac{d\phi}{2\pi}\left( -\frac{\partial}{\partial T}P^0-\frac{\partial}{\partial t}P^1-v_o \bm{n}\cdot \nabla_{\bm{R}} P^1 - \frac{\partial}{\partial X}\left[ F P^1\right] + D \nabla^2_{\bm{R}}P^0  \right) = 0$$
-
-$$\int\limits_0^{2\pi}\frac{d\phi}{2\pi}\left( -w\frac{\partial}{\partial T}\rho^0 + w \frac{v_o^2}{D_r} \bm{n}^2\cdot \nabla^2_{\bm{R}} \rho^0 + w D \nabla^2_{\bm{R}}\rho^0  \right) = 0$$
+$$\int\limits_0^{2\pi}\frac{d\phi}{2\pi}\left( -w\frac{\partial}{\partial T}\rho^0 + w \frac{v_o^2}{D_r} \bm{n}^2\cdot \nabla^2_{\bm{R}} \rho^0 + w D \nabla^2_{\bm{R}}\rho^0  \right) = 0, \tag{22}$$
 
 we obtain
 
-$$\frac{\partial}{\partial T}\rho^0 = \left( D + \frac{v_o^2}{2 D_r} \right) \nabla^2_{\bm{R}} \rho^0$$
+$$\frac{\partial}{\partial T}\rho^0 = \left( D + \frac{v_o^2}{2 D_r} \right) \nabla^2_{\bm{R}} \rho^0. \tag{23}$$
 
 Remembering
 
-$$\frac{\partial}{\partial T} \rho^0 = \frac{\partial}{\partial T} \rho^0 + \frac{1}{\epsilon} \frac{\partial}{\partial t} \rho^0$$
+$$\frac{\partial}{\partial T} \rho^0 = \frac{\partial}{\partial T} \rho^0 + \frac{1}{\epsilon} \frac{\partial}{\partial t} \rho^0, \tag{24}$$
 
 Equation (23) becomes
 
-$$\frac{\partial}{\partial T} \rho^0 =  \frac{1}{\epsilon} \frac{\partial}{\partial t} \rho^0 + \left( D + \frac{v_o^2}{2 D_r} \right) \nabla^2_{\bm{R}} \rho^0$$
-
-$$\frac{\partial}{\partial T} \rho^0 = - \frac{1}{\epsilon} \frac{\partial}{\partial X} \left[ F \rho^0 \right] + \left( D + \frac{v_o^2}{2 D_r} \right) \nabla^2_{\bm{R}} \rho^0$$
+$$
+\begin{align*}
+\frac{\partial}{\partial T} \rho^0 &=  \frac{1}{\epsilon} \frac{\partial}{\partial t} \rho^0 + \left( D + \frac{v_o^2}{2 D_r} \right) \nabla^2_{\bm{R}} \rho^0, \\
+\frac{\partial}{\partial T} \rho^0 &= - \frac{1}{\epsilon} \frac{\partial}{\partial X} \left[ F \rho^0 \right] + \left( D + \frac{v_o^2}{2 D_r} \right) \nabla^2_{\bm{R}} \rho^0. \tag{25}
+\end{align*}
+$$
 
 In dimensional form, we have
 
-$$\frac{\partial}{\partial \tilde{t}} \rho (\tilde{\bm{r}},\tilde{t}) = -\frac{1}{\epsilon} \frac{D_c}{L F_c} \frac{\partial}{\partial \tilde{x}}\left[ \tilde{F} \rho(\tilde{\bm{r}},\tilde{t}) \right] + \left( \tilde{D} + \frac{D_c D_{rc} }{v_{oc}^2} \frac{v_o^2}{2 D_r} \right) \nabla^2_{\tilde{\bm{r}}} \rho(\tilde{\bm{r}},\tilde{t})$$
+$$\frac{\partial}{\partial \tilde{t}} \rho (\tilde{\bm{r}},\tilde{t}) = -\frac{1}{\epsilon} \frac{D_c}{L F_c} \frac{\partial}{\partial \tilde{x}}\left[ \tilde{F} \rho(\tilde{\bm{r}},\tilde{t}) \right] + \left( \tilde{D} + \frac{D_c D_{rc} }{v_{oc}^2} \frac{v_o^2}{2 D_r} \right) \nabla^2_{\tilde{\bm{r}}} \rho(\tilde{\bm{r}},\tilde{t}), \tag{26}$$
 
 with $D_c/L F_c = \mathcal{O}(\epsilon)$ and $D_c D_{rc} / v_{oc}^2=\mathcal{O}(1)$ leading to
 
-$$\boxed{\frac{\partial}{\partial \tilde{t}} \rho (\tilde{\bm{r}},\tilde{t}) = -\frac{\partial}{\partial\tilde{x}}\left[\tilde{F} \rho(\tilde{\bm{r}},\tilde{t}) \right] + \left( \tilde{D} + \frac{\tilde{v}_0^2}{2 \tilde{D}_r} \right) \nabla^2_{\tilde{\bm{r}}}\rho(\tilde{\bm{r}},\tilde{t})}$$
+$$\boxed{\frac{\partial}{\partial \tilde{t}} \rho (\tilde{\bm{r}},\tilde{t}) = -\frac{\partial}{\partial\tilde{x}}\left[\tilde{F} \rho(\tilde{\bm{r}},\tilde{t}) \right] + \tilde{D}_{\text{eff}}  \nabla^2_{\tilde{\bm{r}}}\rho(\tilde{\bm{r}},\tilde{t})}, \tag{27}$$
 
-The effective diffusion coefficient is:
-
-$$\tilde{D}_{\text{eff}} = \tilde{D} + \frac{\tilde{v}_0^2}{2\tilde{D}_r}$$
-
-This equation defines an effective equation derived using a homogenization procedure valid to the leading order $P^0$.
+where the effective diffusion coefficient is $\tilde{D}_{\text{eff}} = \tilde{D} + \frac{\tilde{v}_0^2}{2\tilde{D}_r}.$ This equation defines an effective equation derived using a homogenization procedure valid to the leading order $P^0$, consistent with [17, 18].
 
 ---
 
 ## Conclusion
 
-Through multiple scale analysis, we have rigorously derived how microscopic self-propulsion and rotational diffusion produce enhanced macroscopic diffusion in Active Brownian Particles. The active contribution ṽ₀²/(2D̃ᵣ) emerges naturally from angular averaging—the factor of 1/2 reflecting the geometry of 2D rotational diffusion.
+Through multiple scale analysis, we have rigorously derived how microscopic self-propulsion and rotational diffusion produce enhanced macroscopic diffusion in Active Brownian Particles. The active contribution ṽ₀²/(2D̃ᵣ) emerges naturally from angular averaging.
 
 This derivation demonstrates the power of homogenization theory: systematic separation of scales, power series expansion, and solvability conditions at each order yield effective equations from first principles without phenomenological assumptions. The beauty lies in how a few lines of calculation connect microscopic stochastic dynamics to macroscopic deterministic transport.
 
@@ -190,15 +187,19 @@ Whether studying bacteria in aqueous environments, microswimmers in complex flui
 
 17. Romanczuk, P., Bär, M., Ebeling, W., Lindner, B., & Schimansky-Geier, L. (2012). Active Brownian particles. *The European Physical Journal Special Topics*, 202(1), 1-162.
 
+18. Vachier, J., & Mazza, M.G. (2019). Dynamics of sedimenting active Brownian particles. *The European Physical Journal E*, 42, 11. [https://doi.org/10.1140/epje/i2019-11770-6](https://doi.org/10.1140/epje/i2019-11770-6)
+
 ### My Work
 
 * Vachier, J., & Wettlaufer, J.S. (2022). Premelting controlled active matter in ice. *Physical Review E*, 105, 024601. [https://doi.org/10.1103/PhysRevE.105.024601](https://doi.org/10.1103/PhysRevE.105.024601)
 
 * Vachier, J., & Wettlaufer, J.S. (2022). Biolocomotion and premelting in ice. *Frontiers in Physics*, 10, 904836. [https://doi.org/10.3389/fphy.2022.904836](https://doi.org/10.3389/fphy.2022.904836)
 
+* Vachier, J., & Mazza, M.G. (2019). Dynamics of sedimenting active Brownian particles. *The European Physical Journal E*, 42, 11. [https://doi.org/10.1140/epje/i2019-11770-6](https://doi.org/10.1140/epje/i2019-11770-6)
+
 ---
 
-*Jeremy Vachier is Associate Director of Data Science at AstraZeneca Sweden with a PhD in Theoretical Physics from the Max Planck Institute, specializing in stochastic processes, active matter, and physics-informed machine learning.*
+*Three years ago, I left academia for industry. The transition has been rewarding: the rigorous mathematical frameworks I developed studying active matter and stochastic processes now tackle manufacturing optimization, process control, and ML deployment at scale. Some things change, some don't—I still love a good Fokker-Planck equation.*
 
 
 
