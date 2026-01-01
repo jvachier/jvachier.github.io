@@ -56,13 +56,50 @@ pre {
   overflow: auto;
 }
 
+/* KaTeX equation numbering - prevent overlap */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1em 0;
+  margin: 1em 0;
+}
+
+.katex-display > .katex {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+/* Ensure equation tags don't overlap with equations */
+.katex .tag {
+  position: absolute;
+  right: 0;
+  padding-left: 1em;
+  white-space: nowrap;
+}
+
+/* Add extra right padding to equation containers to prevent tag overlap */
+.katex-display .katex > .katex-html {
+  padding-right: 3em;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   body {
     font-size: 16px;
   }
-  
+
   h1 {
     font-size: 1.75em;
+  }
+
+  /* On mobile, allow equations to scroll if needed */
+  .katex-display {
+    overflow-x: auto;
+  }
+
+  .katex-display .katex > .katex-html {
+    padding-right: 4em;
   }
 }

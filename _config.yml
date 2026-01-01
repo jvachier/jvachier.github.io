@@ -18,7 +18,13 @@ author:
 markdown: kramdown
 kramdown:
   syntax_highlighter: rouge
-  math_engine: null
+  math_engine: katex
+  input: GFM
+  parse_block_html: true
+  smart_quotes: ["apos", "apos", "quot", "quot"]
+  math_engine_opts:
+    preview: true
+    preview_as_code: false
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
