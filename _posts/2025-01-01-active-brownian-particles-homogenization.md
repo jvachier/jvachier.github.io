@@ -25,10 +25,15 @@ $$\frac{d\tilde{\bm{r}}}{d\tilde{t}} = \tilde{v}_0\bm{n} + \tilde{F}\bm{\hat{x}}
 $$\frac{d\phi}{d\tilde{t}} = \sqrt{2\tilde{D}_r}\tilde{\xi}_r, \tag{2}$$
 
 where $\tilde{\bm{r}} = (\tilde{x},\tilde{y})^T$, $\bm{n} = (\cos(\phi),\sin(\phi))^{T}$ and $\bm{\hat{x}}=(1,0)^T$.
-The random fluctuations are given by zero mean Gaussian white noise process $\langle \tilde{\xi}_i(\tilde{t}')\tilde{\xi}_j(\tilde{t}) \rangle = \delta_{ij} \delta(\tilde{t}'-\tilde{t})$ and $\langle \tilde{\xi}_{r_i}(\tilde{t}')\tilde{\xi}_{r_j}(\tilde{t}) \rangle = \delta_{ij} \delta(\tilde{t}'-\tilde{t})$. 
+The random fluctuations are given by zero mean Gaussian white noise process $$\langle \tilde{\xi}_i(\tilde{t}')\tilde{\xi}_j(\tilde{t}) \rangle = \delta_{ij} \delta(\tilde{t}'-\tilde{t}),$$ and $$\langle \tilde{\xi}_{r_i}(\tilde{t}')\tilde{\xi}_{r_j}(\tilde{t}) \rangle = \delta_{ij} \delta(\tilde{t}'-\tilde{t}).$$
 From Eqs. (1) - (2), we derive the associated Fokker-Planck equation
 
-$$\frac{\partial}{\partial\tilde{t}}P(\tilde{\bm{r}},\phi,\tilde{t}) = -\tilde{v}_0\bm{n}\cdot \nabla_{\tilde{\bm{r}}}P(\tilde{\bm{r}},\phi,\tilde{t}) - \frac{\partial}{\partial \tilde{x}}\left[ \tilde{F} P(\tilde{\bm{r}},\phi,\tilde{t}) \right]+ \tilde{D}\nabla^2_{\tilde{\bm{r}}}P(\tilde{\bm{r}},\phi,\tilde{t}) + \tilde{D}_r \frac{\partial^2}{\partial \phi^2} P(\tilde{\bm{r}},\phi,\tilde{t}). \tag{3}$$
+$$
+\begin{split}
+\frac{\partial}{\partial\tilde{t}}P(\tilde{\bm{r}},\phi,\tilde{t}) &= -\tilde{v}_0\bm{n}\cdot \nabla_{\tilde{\bm{r}}}P(\tilde{\bm{r}},\phi,\tilde{t}) - \frac{\partial}{\partial \tilde{x}}\left[ \tilde{F} P(\tilde{\bm{r}},\phi,\tilde{t}) \right] \\
+&\quad + \tilde{D}\nabla^2_{\tilde{\bm{r}}}P(\tilde{\bm{r}},\phi,\tilde{t}) + \tilde{D}_r \frac{\partial^2}{\partial \phi^2} P(\tilde{\bm{r}},\phi,\tilde{t}).
+\end{split} \tag{3}
+$$
 
 The two characteristic length scales $l$ and $L$ give the micro- and macroscale respectively. The microscale $l$ gives the cell size and is assumed to be spatially periodic. Taking the ratio of these two length scales, we define a small parameter $\epsilon$ such as
 
@@ -36,25 +41,66 @@ $$\epsilon = \frac{l}{L}. \tag{4}$$
 
 We introduce the following dimensionless quantities 
 
-$$\bm{R} = \frac{\tilde{\bm{r}}}{L}, \quad T = \frac{\tilde{t} D_c}{L^2}, \quad D = \frac{\tilde{D}}{D_c}, \quad D_r = \frac{\tilde{D}_r}{D_{rc}}, \quad F = \frac{\tilde{F}}{F_c}, \quad v_0 = \frac{\tilde{v}_0}{v_{oc}}, \tag{5}$$
+$$
+\begin{split}
+\bm{R} &= \frac{\tilde{\bm{r}}}{L}, \quad T = \frac{\tilde{t} D_c}{L^2}, \quad D = \frac{\tilde{D}}{D_c}, \quad D_r = \frac{\tilde{D}_r}{D_{rc}}, \\
+F &= \frac{\tilde{F}}{F_c}, \quad v_0 = \frac{\tilde{v}_0}{v_{oc}},
+\end{split} \tag{5}
+$$
 
 where  $v_{oc}$ is the characteristic active velocity, $F_c$ and $D_c$ are the characteristic velocity associated to the external force and diffusity, respectively. Using the previous dimensionless quantities and $P = P(\bm{R},\phi,T)$ to lighten the notations, Eq. (3) becomes
 
-$$\frac{\partial}{\partial T} P = P_e^L v_o \bm{n} \cdot \nabla_{\bm{R}}P - P_F^L\frac{\partial}{\partial X} \left[ F P \right] + D \nabla^2_{\bm{R}}P + P_r^L D_r \frac{\partial^2}{\partial \phi^2}P, \tag{6}$$
+$$
+\begin{split}
+\frac{\partial}{\partial T} P &= P_e^L v_o \bm{n} \cdot \nabla_{\bm{R}}P - P_F^L\frac{\partial}{\partial X} \left[ F P \right] \\
+&\quad + D \nabla^2_{\bm{R}}P + P_r^L D_r \frac{\partial^2}{\partial \phi^2}P,
+\end{split} \tag{6}
+$$
 
 in which the following dimensionless numbers appear
 
 $$P_e^L = \frac{v_{oc}L}{D_c}, \quad P_F^L = \frac{F_c L}{D_c}, \quad P_r^L = \frac{D_{rc} L^2}{D_c}. \tag{7}$$
 
-The first two numbers $P_e^L$ and $P_F^L$ are the Péclet numbers associated to the active velocity and external force, respectively. In addition to the rotational time $\tau_r$ ($D_r \propto 1/\tau_r$), six characteristic time scales are identified: $t^{\text{diff}}_l=l^2/D_c$, $t^{\text{F}}_l=l/F_c$, $t^{\text{act}}_l=l/v_{oc}$, $t^{\text{diff}}_L=L^2/D_c$, $t^{\text{F}}_L=L/F_c$ and $t^{\text{act}}_L=L/v_{oc}$ associated with microscopic (macroscopic) diffusion and advections either given by the external force and the activity on the microscopic length scale $l$ (macroscopic length scale $L$). As a result, the ratio of characteristic time for diffusion and advections are the Péclet numbers
+The first two numbers $P_e^L$ and $P_F^L$ are the Péclet numbers associated to the active velocity and external force, respectively. In addition to the rotational time $\tau_r$ ($D_r \propto 1/\tau_r$), six characteristic time scales are identified:
+
+$$t^{\text{diff}}_l=l^2/D_c, \quad t^{\text{F}}_l=l/F_c, \quad t^{\text{act}}_l=l/v_{oc},$$
+
+$$t^{\text{diff}}_L=L^2/D_c, \quad t^{\text{F}}_L=L/F_c, \quad t^{\text{act}}_L=L/v_{oc},$$
+
+associated with microscopic (macroscopic) diffusion and advections either given by the external force and the activity on the microscopic length scale $l$ (macroscopic length scale $L$). As a result, the ratio of characteristic time for diffusion and advections are the Péclet numbers
 
 $$P_e^{L,l} = \frac{t^{\text{diff}}_{L,l}}{t^{\text{act}}_{L,l}}, \quad P_F^{L,l} = \frac{t^{\text{diff}}_{L,l}}{t^{\text{F}}_{L,l}}. \tag{8}$$
 
 ## Results
 
-The potential ($t^{\text{F}}_L = L/F_c$) and the active velocity ($t^{\text{act}}_L=L/v_{oc}$) will dominate the diffusion ($t^{\text{diff}}_L=L^2/D_c$) at the macroscopic scale. As a result $P_e^L = \mathcal{O}(1/\epsilon)$ and $P_F^L = \mathcal{O}(1/\epsilon)$. The rotational time will overwhelmingly dominate diffusion at the macroscopic scale, giving $P_r^L = \mathcal{O}(1/\epsilon^2)$. Equation (6) becomes
+The potential 
 
-$$\frac{\partial}{\partial T} P = \frac{1}{\epsilon} v_o \bm{n} \cdot \nabla_{\bm{R}}P - \frac{1}{\epsilon}\frac{\partial}{\partial X} \left[ F P \right] + D \nabla^2_{\bm{R}}P + \frac{1}{\epsilon^2} D_r \frac{\partial^2}{\partial \phi^2}P. \tag{9}$$
+$$t^{\text{F}}_L = L/F_c$$
+
+and the active velocity 
+
+$$t^{\text{act}}_L=L/v_{oc}$$
+
+will dominate the diffusion 
+
+$$t^{\text{diff}}_L=L^2/D_c$$
+
+at the macroscopic scale. As a result 
+
+$$P_e^L = \mathcal{O}(1/\epsilon) \quad \text{and} \quad P_F^L = \mathcal{O}(1/\epsilon).$$
+
+The rotational time will overwhelmingly dominate diffusion at the macroscopic scale, giving 
+
+$$P_r^L = \mathcal{O}(1/\epsilon^2).$$
+
+Equation (6) becomes
+
+$$
+\begin{split}
+\frac{\partial}{\partial T} P &= \frac{1}{\epsilon} v_o \bm{n} \cdot \nabla_{\bm{R}}P - \frac{1}{\epsilon}\frac{\partial}{\partial X} \left[ F P \right] \\
+&\quad + D \nabla^2_{\bm{R}}P + \frac{1}{\epsilon^2} D_r \frac{\partial^2}{\partial \phi^2}P.
+\end{split} \tag{9}
+$$
 
 We introduce a dimensionless microscopic length $\bm{r}=\tilde{\bm{r}}/l$ and time $\theta=\tilde{t}D_c/l^2$. Moreover, by looking at the six characteristic time scales, we also need to introduce an intermediate time $t = \tilde{t} D_c/l L$. As a result, we have the following scales stretch
 
@@ -75,8 +121,10 @@ we derive a system of equation at each order in $\epsilon$ [1-3], which are
 $$
 \begin{align*}
 \mathcal{O}(\frac{1}{\epsilon^2}): \quad & \mathcal{L}P^0 = 0, \tag{13}\\
-\mathcal{O}(\frac{1}{\epsilon}): \quad & \mathcal{L}P^1 = -\frac{\partial}{\partial t}P^0-v_o \bm{n}\cdot \nabla_{\bm{R}}P^0 - \frac{\partial}{\partial X}\left[ F P^0\right] + 2 D \nabla_{\bm{r}}\cdot\nabla_{\bm{R}} P^0, \tag{14}\\
-\mathcal{O}(1): \quad & \mathcal{L}P^2 = -\frac{\partial}{\partial T}P^0-\frac{\partial}{\partial t}P^1-v_o \bm{n}\cdot \nabla_{\bm{R}} P^1 - \frac{\partial}{\partial X}\left[ F P^1\right] + 2D\nabla_{\bm{r}}\cdot\nabla_{\bm{R}} P^1 + D \nabla^2_{\bm{R}}P^0, \tag{15}
+\mathcal{O}(\frac{1}{\epsilon}): \quad & \mathcal{L}P^1 = -\frac{\partial}{\partial t}P^0-v_o \bm{n}\cdot \nabla_{\bm{R}}P^0 - \frac{\partial}{\partial X}\left[ F P^0\right] \\
+& \qquad\qquad\qquad\quad + 2 D \nabla_{\bm{r}}\cdot\nabla_{\bm{R}} P^0, \tag{14}\\
+\mathcal{O}(1): \quad & \mathcal{L}P^2 = -\frac{\partial}{\partial T}P^0-\frac{\partial}{\partial t}P^1-v_o \bm{n}\cdot \nabla_{\bm{R}} P^1 - \frac{\partial}{\partial X}\left[ F P^1\right] \\
+& \qquad\qquad\qquad\quad + 2D\nabla_{\bm{r}}\cdot\nabla_{\bm{R}} P^1 + D \nabla^2_{\bm{R}}P^0, \tag{15}
 \end{align*}
 $$
 
@@ -108,7 +156,11 @@ $$\bm{\alpha} = \frac{1}{D_r}\bm{n}. \tag{21}$$
 
 Substitution of $P^1$ into the $\mathcal{O}(1)$ equation and using the solvability condition 
 
-$$\int\limits_0^{2\pi}\frac{d\phi}{2\pi}\left( -w\frac{\partial}{\partial T}\rho^0 + w \frac{v_o^2}{D_r} \bm{n}^2\cdot \nabla^2_{\bm{R}} \rho^0 + w D \nabla^2_{\bm{R}}\rho^0  \right) = 0, \tag{22}$$
+$$
+\begin{split}
+\int\limits_0^{2\pi}\frac{d\phi}{2\pi}\left( -w\frac{\partial}{\partial T}\rho^0 + w \frac{v_o^2}{D_r} \bm{n}^2\cdot \nabla^2_{\bm{R}} \rho^0 + w D \nabla^2_{\bm{R}}\rho^0  \right) = 0,
+\end{split} \tag{22}
+$$
 
 we obtain
 
@@ -129,7 +181,12 @@ $$
 
 In dimensional form, we have
 
-$$\frac{\partial}{\partial \tilde{t}} \rho (\tilde{\bm{r}},\tilde{t}) = -\frac{1}{\epsilon} \frac{D_c}{L F_c} \frac{\partial}{\partial \tilde{x}}\left[ \tilde{F} \rho(\tilde{\bm{r}},\tilde{t}) \right] + \left( \tilde{D} + \frac{D_c D_{rc} }{v_{oc}^2} \frac{v_o^2}{2 D_r} \right) \nabla^2_{\tilde{\bm{r}}} \rho(\tilde{\bm{r}},\tilde{t}), \tag{26}$$
+$$
+\begin{split}
+\frac{\partial}{\partial \tilde{t}} \rho (\tilde{\bm{r}},\tilde{t}) &= -\frac{1}{\epsilon} \frac{D_c}{L F_c} \frac{\partial}{\partial \tilde{x}}\left[ \tilde{F} \rho(\tilde{\bm{r}},\tilde{t}) \right] \\
+&\quad + \left( \tilde{D} + \frac{D_c D_{rc} }{v_{oc}^2} \frac{v_o^2}{2 D_r} \right) \nabla^2_{\tilde{\bm{r}}} \rho(\tilde{\bm{r}},\tilde{t}),
+\end{split} \tag{26}
+$$
 
 with $D_c/L F_c = \mathcal{O}(\epsilon)$ and $D_c D_{rc} / v_{oc}^2=\mathcal{O}(1)$ leading to
 
