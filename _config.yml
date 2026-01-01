@@ -18,9 +18,8 @@ author:
 markdown: kramdown
 kramdown:
   syntax_highlighter: rouge
-  input: GFM
   math_engine: null
-  parse_span_html: false
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
