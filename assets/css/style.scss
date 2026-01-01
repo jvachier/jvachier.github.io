@@ -60,28 +60,13 @@ pre {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 1em 0;
-  margin: 1em 0;
+  text-align: center;
 }
 
-.katex-display > .katex {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-}
-
-/* Ensure equation tags don't overlap with equations */
-.katex .tag {
-  position: absolute;
-  right: 0;
-  padding-left: 1em;
-  white-space: nowrap;
-}
-
-/* Add extra right padding to equation containers to prevent tag overlap */
-.katex-display .katex > .katex-html {
-  padding-right: 3em;
+/* Move equation tags to the right on their own line */
+.katex-display .tag {
+  float: right;
+  margin-left: 1em;
 }
 
 /* Responsive adjustments */
@@ -92,14 +77,5 @@ pre {
 
   h1 {
     font-size: 1.75em;
-  }
-
-  /* On mobile, allow equations to scroll if needed */
-  .katex-display {
-    overflow-x: auto;
-  }
-
-  .katex-display .katex > .katex-html {
-    padding-right: 4em;
   }
 }
