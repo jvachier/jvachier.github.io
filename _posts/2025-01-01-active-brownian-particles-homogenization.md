@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Active Brownian Particles in 2D: Multiple Scale Analysis
+title: Active Brownian Particles in 2D - Multiple Scale Analysis
 date: 2026-01-01
 excerpt: Deriving the effective equation for Active Brownian Particles using multiple scale expansion.
 ---
