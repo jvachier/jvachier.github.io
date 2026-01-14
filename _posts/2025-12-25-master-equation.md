@@ -51,7 +51,7 @@ where $Q$ is the infinitesimal generator (or rate matrix) of the process.
 
 ## Forward Chapman-Kolmogorov Equation
 
-Let's write the forward Chapman-Kolmogorov equation, $t \ge s$, is given by:
+The forward Chapman-Kolmogorov equation, $t \ge s$ is given by:
 
 $$P_{nm}(t+s) = \sum_{k=0}^{+\infty} P_{nk}(t) P_{km}(s), \tag{5}$$
 
@@ -59,7 +59,7 @@ or using matrix notation
 
 $$ P(t+s) =P(t)P(s). \tag{5 bis}$$
 
-Similarly, the backward Chapman-Kolmogorov equation, $t \le s$, is given by:
+Similarly, the backward Chapman-Kolmogorov equation, $t \le s$ is given by:
 
 $$P_{nm}(t+s) = \sum_{k=0}^{+\infty} P_{mk}(s) P_{km}(t), \tag{6}$$
 
@@ -79,7 +79,7 @@ P_{nm}(t+s) - P_{nm}(t) &= \sum_{\substack{k=0}}^{+\infty} P_{nk}(t) P_{km}(s) -
 \end{aligned}
 $$
 
-Taking the limit as $s \to 0$ of the previous equation gives:
+Taking the limit as $s \to 0$ of the previous equation leads to:
 
 $$
 \begin{aligned}
@@ -88,7 +88,7 @@ $$
 \end{aligned}
 $$
 
-Noticing $1=\sum\limits_{k=0}^{+\infty}P_{mk}(s) \Leftrightarrow 1 = \sum\limits_{k\neq m}^{+\infty}P_{mk}(s) + P_{mm}(s)$ gives
+Noticing $1=\sum\limits_{k=0}^{+\infty}P_{mk}(s) \Leftrightarrow 1 = \sum\limits_{k\neq m}^{+\infty}P_{mk}(s) + P_{mm}(s)$ gives:
 
 $$
 \begin{aligned}
