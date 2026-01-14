@@ -29,3 +29,4 @@ I hold a PhD in Theoretical Physics from the Max Planck Institute for Dynamics a
 - [LinkedIn](https://www.linkedin.com/in/jérémy-vachier-28344011b/)
 - [Kaggle](https://kaggle.com/jvachier)
 - [Google Scholar](https://scholar.google.com/citations?user=zOwO_OUAAAAJ&hl=fr)
+- [ResearchGate](https://www.researchgate.net/profile/Jeremy-Vachier)
