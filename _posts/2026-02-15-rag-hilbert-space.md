@@ -103,7 +103,7 @@ Once embeddings are directions on $S^{d-1}$, retrieval is finding the closest di
 
 My scientific RAG uses ChromaDB with HNSW graphs, approximate $O(\log N)$ search with >95% recall, suitable for research-scale corpora ($\sim 10^4$ documents). For larger scale, FAISS provides `IndexFlatIP` (exhaustive, exact) and `IndexIVFFlat`, which partitions embedding space via Voronoi tessellation, clustering into cells via k-means and searching only the nearest cells at query time.
 
-This is the same Voronoi partitioning we used in our [research on bacterial biofilm spatial organization](https://scholar.google.com/citations?user=zOwO_OUAAAAJ&hl=fr), identical geometry applied to semantic space.
+This is the same Voronoi partitioning we used in our research on [self-generated oxygen gradients controlling collective aggregation of photosynthetic microbes](https://royalsocietypublishing.org/rsif/article/18/185/20210553/90068), identical geometry applied to semantic space.
 
 ## Practical Lessons
 
