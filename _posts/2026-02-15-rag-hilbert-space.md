@@ -14,13 +14,14 @@ Retrieval-Augmented Generation (RAG) is a technique that combines information re
 Large language models hallucinate, they generate fluent text that is factually wrong. RAG addresses this by grounding responses in retrieved documents, giving the model factual content to draw from rather than relying on parametric memory alone. When a user asks about a specific technical specification, the system retrieves the relevant documentation before generating a response, ensuring accuracy.
 
 A RAG pipeline involves several steps:
-1) loading
-2) cleaning
-3) chunking 
-4) embedding 
-5) indexing 
-6) retrieval 
-7) generation 
+
+1. Loading
+2. Cleaning
+3. Chunking 
+4. Embedding 
+5. Indexing 
+6. Retrieval 
+7. Generation 
 
 This post focuses on steps 4 and 5, embedding and indexing, where Hilbert space geometry becomes essential. I explain why L2 normalization is mathematically necessary, how transformers build semantic representations, and how geometric search structures enable efficient retrieval at scale. At the end, I share a personal connection to this mathematical framework from my time at the Max Planck Institute.
 
@@ -58,7 +59,7 @@ Starting with `"Fokker-Planck equation for active swimmers"`, the tokenizer prod
 
 ### Step 2: Transformer Encoding
 
-The most effective way to build semantically rich embeddings is through the transformer architecture, and specifically its attention mechanism, which allows each token to attend to all others and build context-aware representations. I provide a detailed walkthrough in my from-scratch transformer implementation for neural machine translation ([GitHub](https://github.com/jvachier/Sentiment_Analysis) | [Kaggle](https://www.kaggle.com/code/jvachier/transformer-nmt-en-fr)); here, the key points.
+The most effective way to build semantically rich embeddings is through the transformer architecture, and specifically its attention mechanism, which allows each token to attend to all others and build context-aware representations. I provide a detailed walkthrough in my from-scratch transformer implementation for neural machine translation on [GitHub](https://github.com/jvachier/Sentiment_Analysis) and [Kaggle](https://www.kaggle.com/code/jvachier/transformer-nmt-en-fr); here, the key points.
 
 Each token ID is first looked up in a learned embedding table, then self-attention contextualizes each vector. "Active" attends to "swim"/"##mers," forming the compound concept; "equation" attends to "Fokker"/"Planck," recognizing the named equation. After multiple attention layers, each token $i$ has a contextualized representation $\mathbf{h}_i \in \mathbb{R}^{768}$:
 
