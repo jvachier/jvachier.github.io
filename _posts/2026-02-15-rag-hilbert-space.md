@@ -27,7 +27,9 @@ This post focuses on steps 4 and 5, embedding and indexing, where Hilbert space 
 
 **[→ View Full Implementation on GitHub](https://github.com/jvachier/scientific-literature-rag)**
 
-**[→ View Transformer Implementation: GitHub](https://github.com/jvachier/Sentiment_Analysis) | [Kaggle](https://www.kaggle.com/code/jvachier/transformer-nmt-en-fr)**
+**[→ View Transformer Implementation on GitHub](https://github.com/jvachier/Sentiment_Analysis)**
+
+**[→ View Transformer Implementation on Kaggle](https://www.kaggle.com/code/jvachier/transformer-nmt-en-fr)**
 
 ## The Vocabulary Mismatch Problem: Why High-Dimensional Hilbert Space Matters
 
