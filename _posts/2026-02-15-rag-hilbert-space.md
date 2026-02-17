@@ -27,7 +27,9 @@ This post focuses on steps 4 and 5, embedding and indexing, where Hilbert space 
 
 **[→ View Full Implementation on GitHub](https://github.com/jvachier/scientific-literature-rag)**
 
-**[→ View Transformer Implementation: GitHub](https://github.com/jvachier/Sentiment_Analysis) | [Kaggle](https://www.kaggle.com/code/jvachier/transformer-nmt-en-fr)**
+**[→ View Transformer Implementation on GitHub](https://github.com/jvachier/Sentiment_Analysis)**
+
+**[→ View Transformer Implementation on Kaggle](https://www.kaggle.com/code/jvachier/transformer-nmt-en-fr)**
 
 ## The Vocabulary Mismatch Problem: Why High-Dimensional Hilbert Space Matters
 
@@ -85,6 +87,8 @@ $$\mathbf{e} = \frac{1}{n} \sum_{i=1}^{n} \mathbf{h}_i$$
 ```
 
 Mean pooling aggregates the contextual information from all tokens into one vector. This pooled vector $\mathbf{e} \in \mathbb{R}^{768}$ represents the entire text's meaning, ready for normalization and comparison.
+
+Alternative pooling strategies exist: sentence-transformers supports weighted pooling (where token contributions are learned) and CLS token embeddings (using only the special classification token's representation). SPECTER2 (allenai/specter2_base), which I use in my scientific RAG system, is built on sentence-transformers but uses mean pooling as described above, finding this approach effective for scientific text.
 
 ### Step 4: L2 Normalization
 
