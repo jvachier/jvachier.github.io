@@ -69,7 +69,10 @@ A comprehensive end-to-end system integrating speech recognition, sentiment anal
 
 **Technologies:** Python 3.11+, Transformer, Bidirection LSTM, TensorFlow, Keras, Vosk, Dash, Optuna  
 **Status:** Research/Educational | Apache 2.0 License  
-[→ View on GitHub](https://github.com/jvachier/Sentiment_Analysis)
+[→ View on GitHub](https://github.com/jvachier/Sentiment_Analysis)  
+[→ View Transformer Model on HuggingFace](https://huggingface.co/Jvachier/en-fr-transformer-from-scratch)  
+[→ Try Interactive Demo on HuggingFace Spaces](https://huggingface.co/spaces/Jvachier/transformer-nmt-en-fr)  
+[→ View on Kaggle](https://www.kaggle.com/code/jvachier/transformer-nmt-en-fr)
 
 ---
 
