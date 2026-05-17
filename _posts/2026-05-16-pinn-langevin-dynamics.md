@@ -2,7 +2,7 @@
 layout: default
 title: "Physics-Informed Neural Networks for Langevin Dynamics"
 date: 2026-05-16
-excerpt: A physics-informed machine learning pipeline rooted in the Langevin equation, training neural networks to learn probability density evolution governed by the Fokker–Planck equation, with autoregressive rollout requiring no further simulation data.
+excerpt: A physics-informed machine learning pipeline rooted in the Langevin equation, training neural networks to learn probability density evolution governed by the Fokker–Planck equation, with rollout driven by analytic teacher forcing rather than simulation data.
 ---
 
 # Physics-Informed Neural Networks for Langevin Dynamics
@@ -118,7 +118,7 @@ Generalisation holds on held-out time-steps. The model has learned the temporal 
 
 The physics-constrained propagator predicts the PDF at five future times, $\tau \approx 2.5 \to 10$. At each step, the input is a Gaussian reconstructed from the analytically known mean and variance, analytic teacher forcing, rather than the network's own previous output. The dashed red curve tracks the analytic Gaussian (blue) closely across the full rollout window.
 
-![Figure 3: Autoregressive rollout of the Fokker–Planck propagator (dashed red) at five future snapshots, compared to the analytic Gaussian (blue).](/assets/images/comparison_propagator.png)
+![Figure 3: Rollout of the Fokker–Planck propagator (dashed red) at five future snapshots using analytic teacher forcing, compared to the analytic Gaussian (blue).](/assets/images/comparison_propagator.png)
 
 The result confirms that the network has learned a valid one-step map consistent with the Fokker–Planck equation. The open question, whether the network can sustain accurate rollout from its own output without analytic scaffolding, is the natural next step.
 
