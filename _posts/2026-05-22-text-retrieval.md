@@ -5,11 +5,16 @@ date: 2026-05-22
 excerpt: Methods in information retrieval from classical keyword matching to neural encoders trained with contrastive objectives, with core equations, key papers, and benchmarks on a synthetic industrial dataset.
 ---
 
+# From Keywords to Semantics: A Technical Guide to Text Retrieval
+
+## From Exact Matching to Neural Encoders
+
 Methods in information retrieval: from classical keyword matching to neural encoders trained with contrastive objectives. Each method is presented with its core equations, the paper that introduced it, and the intuition behind the design choices.
 
-This post accompanies two Kaggle notebooks where these methods are implemented from scratch and benchmarked on a synthetic industrial maintenance dataset:
+This post accompanies two Kaggle notebooks and a published synthetic dataset where these methods are implemented from scratch and benchmarked on a synthetic industrial maintenance dataset:
 - [Retrieval from Scratch](https://www.kaggle.com/code/jvachier/retrieval-from-scratch): BM25, MLM pre-training, and SimCSE on MS MARCO and industrial text
 - [Hard Negative Mining for Dense Retrieval](https://www.kaggle.com/code/jvachier/hard-negative-mining-for-dense-retrieval): a counterintuitive finding on when harder negatives hurt
+- Industrial Maintenance Synthetic Data — [generator on GitHub](https://github.com/jvachier/industrial-maintenance-synthetic-data), dataset on [HuggingFace](https://huggingface.co/datasets/Jvachier/industrial-maintenance-synthetic) and [Kaggle](https://www.kaggle.com/datasets/jvachier/industrial-maintenance-synthetic-dataset)
 
 ---
 
@@ -198,7 +203,7 @@ No single system dominates. For a production pipeline: BM25 for first-stage retr
 
 - Relevance is assessed by keyword presence in the retrieved document, which systematically favours lexical systems and likely understates the paraphrase advantage of neural encoders.
 - The evaluation suites are small (20 / 10 / 8 / 10 queries) and use a single random seed. Quantitative differences smaller than a few rank-position changes should not be over-interpreted.
-- The industrial maintenance dataset is synthetic. The 2,346-token vocabulary is unusually small, partly because synthetic generators do not reproduce the long tail of real free-text maintenance notes.
+- The industrial maintenance dataset is synthetic. The 2,346-token vocabulary is unusually small, partly because synthetic generators do not reproduce the long tail of real free-text maintenance notes. The generation procedure is available [on GitHub](https://github.com/jvachier/industrial-maintenance-synthetic-data) for inspection or reuse.
 - The hard-negative mining procedure falls back to a random negative for 28.9% of anchors. The hard-neg condition is therefore a hard/random mixture, not pure hard.
 
 ---
