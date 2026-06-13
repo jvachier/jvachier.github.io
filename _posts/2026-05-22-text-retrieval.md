@@ -64,7 +64,7 @@ $$\text{BM25}(q, d) = \sum_{t \in q} \text{IDF}(t) \cdot \frac{f(t, d) \cdot (k_
 
 where:
 - $f(t, d)$ is the raw term frequency of token $t$ in document $d$
-- $|d|$ is the number of tokens in document $d$
+- $\lvert d \rvert$ is the number of tokens in document $d$
 - $\text{avgdl}$ is the mean document length across the corpus
 - $k_1 \in [1.2, 2.0]$ is the term frequency saturation parameter — as $f(t,d) \to \infty$, the score saturates at $k_1 + 1$, preventing a single high-frequency term from dominating
 - $b \in [0, 1]$ is the length normalisation parameter — $b = 1$ gives full normalisation, $b = 0$ disables it
