@@ -162,6 +162,57 @@ A production-ready machine learning pipeline for personality classification usin
 
 ---
 
+### Industrial Audio Anomaly Detection
+**Unsupervised anomaly detection for industrial machine audio**
+
+![Gradio app demo](/assets/images/gradio_demo.gif)
+
+*Upload a .wav recording to the Gradio app and get a verdict (normal/anomalous), the pooled Mahalanobis anomaly score, and its percentile against the calibration distribution of normal clips.*
+
+![Per-machine-ID AUC bar chart](/assets/images/v4.3_summary.png)
+
+*Per-machine-ID mean AUC-ROC for all detector families across fan, pump, and valve, averaged over 3 seeds with ±1 std error bars. The embedding model dominates on valve and fan; the Dense AE leads on pump.*
+
+![ArcFace oracle vs autoselect ROC comparison](/assets/images/v5_comparison_roc.png)
+
+*ROC curves on valve comparing oracle per-ID scoring against ArcFace pooled Mahalanobis scoring. The curves overlap: the deployment constraint of knowing the machine ID is removed without meaningful loss in detection performance.*
+
+Unsupervised anomaly detection on industrial machine audio, benchmarked on the MIMII pump dataset and DCASE 2020 Task 2 (fan, pump, valve at 0 dB SNR). Three detector families are compared in increasing order of sophistication: a Dense Autoencoder, a Transformer-VAE scored by ELBO and KL divergence, and an ArcFace-trained embedding model scored by Mahalanobis distance to the stationary distribution of normal embeddings. The deployed valve model requires no known machine ID at inference and reaches 0.947 AUC.
+
+**Key Features:**
+- **Three Detector Families**: Dense Autoencoder, Transformer-VAE (ELBO and KL scoring), and ArcFace embedding + Mahalanobis distance
+- **From-Scratch DSP**: STFT, triangular mel filterbank, and patch extraction implemented in NumPy/SciPy, no librosa
+- **ArcFace Angular Margin Loss**: Tightens per-machine-ID clusters on the hypersphere for reliable scoring without a known machine ID
+- **Pooled Mahalanobis Deployment Scoring**: Single LedoitWolf distribution fitted across all machine IDs, no oracle ID required at inference
+- **Gradio Web App**: Upload a .wav recording and get a verdict, anomaly score, and percentile against the calibration distribution
+- **HuggingFace Hub Integration**: Models downloaded and cached automatically on first run
+- **CLI + Python API**: `iaad score`, `iaad ensemble`, `iaad evaluate` commands, plus `AnomalyDetector` / `EnsembleDetector` classes
+- **Full Test Coverage + CI**: pytest suite, Ruff linting, pre-commit hooks, GitHub Actions CI
+
+**Results (per-machine-ID mean AUC-ROC, chance = 0.500):**
+
+| Detector | Fan | Pump | Valve |
+|---|:---:|:---:|:---:|
+| Dense AE | 0.501 | **0.671** | 0.632 |
+| Transformer-VAE (recon) | 0.501 | 0.667 | 0.591 |
+| Transformer-VAE (KL) | 0.491 | 0.631 | 0.439 |
+| EMB per-ID (oracle) | **0.714** | 0.645 | 0.966 |
+| **EMB pooled Mahalanobis (deployed)** | 0.730 | 0.738 | **0.947** |
+
+**Datasets:**
+- MIMII pump (Purohit et al., 2019): single machine type, ~380 normal and 136 anomalous clips at 16 kHz
+- DCASE 2020 Task 2 (Koizumi et al., 2020): fan, pump, and valve at 0 dB SNR, 4 physical machine units per type
+
+**Technologies:** Python 3.11+, TensorFlow, Keras, Transformer, ArcFace, Gradio, HuggingFace Hub  
+**Status:** Production Ready | Apache 2.0 License  
+[→ View on GitHub](https://github.com/jvachier/industrial-audio-anomaly-detection)  
+[→ Read the Blog Post](https://jvachier.github.io/blog/2026/06/25/the-same-encoder-a-different-distance/)  
+[→ View Model on HuggingFace](https://huggingface.co/jvachier/dcase2020-task2-anomaly-detection)  
+[→ View on Kaggle: MIMII Pump Baseline](https://www.kaggle.com/code/jvachier/unsupervised-industrial-audio-anomaly-detection)  
+[→ View on Kaggle: DCASE 2020 Benchmark](https://www.kaggle.com/code/jvachier/unsupervised-audio-anomaly-ae-vae-transformer)
+
+---
+
 ## Open Source Contributions
 
 All public projects available on [GitHub](https://github.com/jvachier)
