@@ -213,6 +213,60 @@ Unsupervised anomaly detection on industrial machine audio, benchmarked on the M
 
 ---
 
+### Meeting Notes from Raw Transcripts
+**Two from-scratch transformers that turn a raw meeting transcript into notes**
+
+![Note_taker app demo](/assets/images/note_taker_demo.webp)
+
+*The Dash app: Model 2 restores punctuation and casing in a voice note, then Model 1 turns a raw speech-to-text transcript into decisions, action items (with owners) and key points, with the importance score of every sentence.*
+
+![Note_taker pipeline](/assets/images/note_taker_pipeline.svg)
+
+*From a raw transcript to meeting notes: punctuation restoration (Model 2), sentence splitting, sentence scoring (Model 1) and fixed selection rules.*
+
+Two small transformer models built entirely from scratch with Keras 3 on the JAX backend: own WordPiece tokenizer, own architectures, no pretrained weights. **Model 2** (7.3M parameters) restores punctuation and casing in lowercase speech-to-text output. **Model 1** (20.9M parameters) reads a whole meeting and picks the sentences that matter, sorting them into decisions, action items with owner and deadline, and key points. Model 1 is trained on a gold-labelled meeting corpus I built for this project, with real AMI meetings as the headline test set. Both models are published on Hugging Face.
+
+![Model 1 architecture](/assets/images/note_taker_model1.svg)
+
+*Model 1 is hierarchical: a sentence encoder (pretrained by masked-language modelling) reads each sentence on its own, then a meeting encoder lets the sentences attend to each other before the per-sentence heads.*
+
+**Key Features:**
+- **From Scratch**: WordPiece tokenizer, pre-LayerNorm transformers and custom Keras layers, no pretrained weights or tokenizers
+- **Hierarchical Meeting Model**: Sentence encoder + meeting encoder over up to 256 sentences per window, with speaker and speaker-change embeddings
+- **Gold-Labelled Corpus**: [meeting-notes-extractive-v1](https://huggingface.co/datasets/Jvachier/meeting-notes-extractive-v1), about 1,900 meetings and 260,000 labelled sentences (hand-written synthetic meetings with hard negatives, plus real AMI meetings)
+- **Teacher Distillation Experiment**: Qwen3-0.6B (reasoning labels) and a fine-tuned RoBERTa-Large as teachers, compared with gold-only training
+- **Owners, Deadlines and Replies**: Span head for owner / deadline, and rules that attach short replies ("OK, I will email him tonight.") to the request they answer
+- **Interactive Dash App**: Punctuation restoration and meeting notes side by side, with an importance chart, served by gunicorn in Docker
+- **Self-Contained Releases**: Each Hugging Face repo ships its own `modeling.py`, so the models run with only `keras`, `jax` and `tokenizers`
+- **Production Practices**: Every hyperparameter in versioned configs, 3 seeds per run, model selection on validation only, full test suite, pre-commit and GitHub Actions CI
+
+**Results (Model 1, test set, importance F1, mean ± std over 3 seeds):**
+
+| System | Params | Pretrained | AMI (real meetings) | Synthetic meetings |
+|---|:---:|:---:|:---:|:---:|
+| Lead-k (first sentences) | – | – | 0.319 | 0.337 |
+| Qwen3-0.6B (prompted) | 600M | yes | 0.318 | 0.403 |
+| DistilBERT (fine-tuned) | 66M | yes | 0.580 | 0.870 |
+| RoBERTa-Large (fine-tuned) | 355M | yes | **0.634** | **0.903** |
+| Ours + distillation (E4) | 20.9M | no | 0.567 ± 0.006 | 0.884 ± 0.006 |
+| **Ours, gold labels only (released)** | **20.9M** | **no** | 0.578 ± 0.006 | 0.878 ± 0.013 |
+
+**Key Findings:**
+- From scratch and with a third of the parameters, Model 1 **matches a fine-tuned DistilBERT** on real meetings, 5.6 points below RoBERTa-Large (17× larger)
+- **Distillation did not help**: training with the Qwen and RoBERTa teachers was slightly worse than gold labels alone, so the released model uses no teacher
+- Model 2 reaches **0.789 punctuation macro-F1 and 0.965 casing accuracy** on DialogSum (rule baseline: 0.093), and stays at 0.662 with 20% of the words corrupted
+- Limits, stated plainly: the notes are extractive (a decision spread over several turns is not written out), and decision / action-item F1 on real AMI meetings stays below 0.1 for every system tested
+
+**Technologies:** Python 3.11+, Keras 3, JAX, Transformer (from scratch), WordPiece tokenizer, Dash, Docker, Hugging Face Hub  
+**Status:** Production Ready | Code: MIT License · Models: CC BY-NC-SA 4.0  
+[→ View on GitHub](https://github.com/jvachier/Note_taker)  
+[→ View Meeting Notes Model on HuggingFace](https://huggingface.co/Jvachier/meeting-notes-en-21m)  
+[→ View Punctuation & Casing Model on HuggingFace](https://huggingface.co/Jvachier/punctuation-casing-en-7m)  
+[→ View Dataset on HuggingFace](https://huggingface.co/datasets/Jvachier/meeting-notes-extractive-v1)  
+[→ View Dataset on Kaggle](https://www.kaggle.com/datasets/jvachier/meeting-notes-extractive-v1)
+
+---
+
 ## Open Source Contributions
 
 All public projects available on [GitHub](https://github.com/jvachier)
