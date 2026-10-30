@@ -230,6 +230,10 @@ Two small transformer models built entirely from scratch with Keras 3 on the JAX
 
 *Model 1 is hierarchical: a sentence encoder (pretrained by masked-language modelling) reads each sentence on its own, then a meeting encoder lets the sentences attend to each other before the per-sentence heads.*
 
+![Model 2 architecture](/assets/images/model2_cleanup.svg)
+
+*Model 2 is a token-classification transformer: a 4-block pre-LayerNorm encoder reads a window of lowercase words and predicts one casing label and one punctuation label per word, without ever adding, removing or correcting words.*
+
 **Key Features:**
 - **From Scratch**: WordPiece tokenizer, pre-LayerNorm transformers and custom Keras layers, no pretrained weights or tokenizers
 - **Hierarchical Meeting Model**: Sentence encoder + meeting encoder over up to 256 sentences per window, with speaker and speaker-change embeddings
