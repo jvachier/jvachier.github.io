@@ -7,16 +7,17 @@ title: Home
 
 ## About
 
-I am an Associate Director of Data Science building production machine learning systems for pharmaceutical manufacturing that combine rigorous GxP compliance with cutting-edge ML techniques. My journey from theoretical physics to industrial ML gives me a unique perspective on solving complex problems at the intersection of fundamental science and practical engineering.
+I am an Associate Director of Data Science, currently doing a secondment as Principal AI Engineer, building production machine learning systems for pharmaceutical manufacturing that combine rigorous GxP compliance with cutting-edge ML techniques. My journey from theoretical physics to industrial ML gives me a unique perspective on solving complex problems at the intersection of fundamental science and practical engineering.
 
 I hold a PhD in Theoretical Physics from the Max Planck Institute for Dynamics and Self-Organization, where I specialized in stochastic processes and non-equilibrium statistical mechanics. After completing a Postdoctoral position followed by a Researcher position at NORDITA (Nordic Institute for Theoretical Physics) in Applied Mathematics, I transitioned to industry, bringing deep mathematical foundations to real-world ML challenges.
 
 ## Current Focus
 
-- **Production ML Systems**: Building GxP-compliant models for pharmaceutical manufacturing (autoencoders, VAEs, RL, GenAI, predictive maintenance)
+- **Agentic AI**: designed and deployed agentic RAG systems in production; now scaling agentic systems across teams, with a focus on evaluation, reliability and common engineering standards
+- **Production ML Systems**: Building GxP-compliant models for pharmaceutical manufacturing (autoencoders, VAEs, RL, GenAI, digital twins, predictive maintenance)
 - **From-Scratch Implementations**: Building deep learning architectures without pre-trained models to deeply understand fundamentals (Transformers, attention mechanisms, custom training pipelines)
 - **Physics-Informed ML**: Applying stochastic process theory and statistical physics to machine learning problems
-- **Competitive ML**: Kaggle Expert 
+- **Competitive ML**: Kaggle Expert, top 1.3% (48 of 3,575 teams)
 - **Open Source Research Tools**: Scientific literature RAG systems, GPU-accelerated implementations, production-grade ML pipelines
 
 
